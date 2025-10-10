@@ -82,13 +82,13 @@
   --color-bg: #f8f9fb;
   --header-surface: rgba(248, 249, 251, 0.92);
   --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.08);
-  --menu-diameter: clamp(280px, 72vw, 520px);
-  --hero-circle-top: clamp(100px, 18vh, 200px);
+  --menu-diameter: clamp(340px, 70vw, 600px);
+  --hero-circle-top: clamp(90px, 18vh, 200px);
   --hero-circle-size: clamp(320px, 80vw, 720px);
-  --hero-overlay-size: clamp(140px, 36vw, 260px);
+  --hero-overlay-size: clamp(160px, 38vw, 280px);
   --hero-guide-gap: clamp(80px, 12vh, 220px);
-  --menu-center-top: clamp(24px, 12vh, 96px);
-  --menu-center-right: clamp(16px, 10vw, 120px);
+  --menu-center-top: clamp(72px, 14vh, 140px);
+  --menu-center-offset: clamp(0px, 3vw, 20px);
 }
 
 * {
@@ -106,6 +106,7 @@ body {
   line-height: 1.6;
   position: relative;
   min-height: 200vh;
+  overflow-x: hidden;
 }
 
 body.nav-open {
@@ -262,11 +263,10 @@ body.nav-open {
 .circular-nav__wheel-wrapper {
   position: absolute;
   top: var(--menu-center-top);
-  right: var(--menu-center-right);
+  right: calc(-0.5 * var(--menu-diameter) + var(--menu-center-offset));
   width: var(--menu-diameter);
   height: var(--menu-diameter);
-  transform: translate(50%, -50%);
-  transform-origin: 100% 0;
+  transform: translate(0, -50%);
   display: grid;
   place-items: center;
   pointer-events: none;

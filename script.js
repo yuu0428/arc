@@ -432,7 +432,7 @@
       }
 
       if (force || !navState.radius) {
-        navState.radius = Math.max(rect.width / 2 - 200, rect.width * 0.32);
+        navState.radius = Math.max(rect.width / 2 - 140, rect.width * 0.42);
       }
 
       const activeIndex = getActiveItemIndex();
@@ -447,7 +447,7 @@
         const isActive = index === activeIndex;
         const opacity = isActive ? 1 : 0.85;
 
-        const itemDistance = navState.radius + 140;
+        const itemDistance = navState.radius + Math.max(rect.width * 0.16, 60);
         const displayAngle = angle + navState.displayOffset;
         const transform = `translate(-50%, -100%) rotate(${displayAngle.toFixed(3)}deg) translateX(${itemDistance.toFixed(3)}px) rotate(180deg) scale(${scale.toFixed(3)})`;
         item.style.transform = transform;
