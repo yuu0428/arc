@@ -21,7 +21,12 @@
     const primaryKey = `src${mode.charAt(0).toUpperCase()}${mode.slice(1)}`;
     const candidates = [dataset[primaryKey], dataset.srcDefault, dataset.srcLight, dataset.srcDark];
     const assetPath = candidates.find((value) => typeof value === 'string' && value.trim().length > 0);
-    return assetPath ? new URL(assetPath, window.location.origin).href : '';
+    if (!assetPath) return '';
+    try {
+      return new URL(assetPath, window.location.href).href;
+    } catch (error) {
+      return assetPath;
+    }
   };
 
   let currentLogoMode = 'default';
