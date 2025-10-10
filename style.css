@@ -188,8 +188,8 @@ body.nav-open {
 
 .logo-fixed {
   position: fixed;
-  top: 1rem;
-  left: 1rem;
+  top: calc(env(safe-area-inset-top, 0px) + 16px);
+  left: calc(env(safe-area-inset-left, 0px) + 16px);
   z-index: 120;
   display: inline-flex;
   align-items: center;
@@ -260,10 +260,10 @@ body.nav-open {
 .circular-nav__wheel-wrapper {
   position: absolute;
   top: clamp(40px, 12vh, 140px);
-  left: 0;
+  right: 0;
   width: var(--menu-diameter);
   height: var(--menu-diameter);
-  transform: translate(-50%, 0);
+  transform: translate(50%, 0);
   display: grid;
   place-items: center;
   pointer-events: none;
@@ -321,11 +321,11 @@ body.nav-open {
   color: #ffffff;
   border: none;
   font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(8rem, 14vw, 16rem);
-  letter-spacing: 0.04em;
-  font-weight: 800;
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  letter-spacing: 0.06em;
+  font-weight: 700;
   white-space: nowrap;
-  transform: translate(-50%, -100%) scale(0.82);
+  transform: translate(-50%, -100%) scale(0.92);
   transition: transform 160ms ease, opacity 160ms ease, color 160ms ease, text-shadow 160ms ease;
   pointer-events: auto;
   user-select: none;
