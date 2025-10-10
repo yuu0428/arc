@@ -1,4 +1,4 @@
-.guide-box {
+/*.guide-box {
   position: absolute;
   z-index: 20;
   pointer-events: none;
@@ -11,6 +11,7 @@
   height: 150px;
   transition: box-shadow 0.2s ease;
 }
+*/
 
 .logo-placement {
   position: absolute;
