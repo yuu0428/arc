@@ -1,4 +1,4 @@
-/*.guide-box {
+.guide-box {
   position: absolute;
   z-index: 20;
   pointer-events: none;
@@ -11,7 +11,6 @@
   height: 150px;
   transition: box-shadow 0.2s ease;
 }
-*/
 
 .logo-placement {
   position: absolute;
@@ -30,17 +29,17 @@
   position: absolute;
   left: 50%;
   top: calc(var(--hero-circle-top) + var(--hero-circle-size) + var(--hero-guide-gap));
-  width: clamp(280px, 90vw, 640px);
-  min-height: clamp(130px, 18vh, 200px);
+  width: clamp(300px, 88vw, 640px);
+  min-height: clamp(140px, 18vh, 200px);
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: clamp(2.6rem, 7vw, 5.8rem);
+  font-size: clamp(2.4rem, 6.5vw, 5.6rem);
   font-weight: 800;
-  color: #ffffff;
-  letter-spacing: clamp(0.08em, 2.2vw, 0.14em);
+  color: #E8EEFF;
+  letter-spacing: clamp(0.1em, 2vw, 0.14em);
   text-transform: uppercase;
   z-index: 28;
   pointer-events: none;
@@ -300,8 +299,8 @@ body.nav-open {
 }
 
 .circular-nav__wheel::before {
-  background: rgba(14, 24, 42, 0.96);
-  box-shadow: -28px 26px 72px rgba(9, 12, 20, 0.65);
+  background: radial-gradient(circle at 30% 30%, #3C4B9B 0%, #1B2553 70%, #0F1A3D 100%);
+  box-shadow: -28px 26px 72px rgba(9, 12, 20, 0.55);
   mask: conic-gradient(
     from var(--nav-arc-start),
     #000 0deg var(--nav-arc-span),
