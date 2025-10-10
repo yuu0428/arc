@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Header Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hero-backdrop" aria-hidden="true"></div>
+
+  <a class="logo-fixed" href="#top">
+    <img data-src-default="images/logo1.jpg" data-src-light="images/logo1.jpg" data-src-dark="images/logo11.jpg" alt="logo" />
+  </a>
+
+  <header class="site-header" data-hidden="false">
+    <div class="header-inner">
+      <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="circular-nav" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="guide-box" id="guide-box" aria-hidden="true"></div>
+  <div class="guide-text">放課後、地域で奮闘中</div>
+  <img class="logo-placement" src="images/circul.jpg" alt="circul" />
+  <img class="logo-overlay" src="images/logo11.jpg" alt="logo11" />
+
+  <div class="circular-nav" id="circular-nav" data-circular-nav role="dialog" aria-modal="true" aria-hidden="true" hidden>
+    <button class="circular-nav__backdrop" type="button" aria-label="メニューを閉じる" data-nav-close></button>
+    <div class="circular-nav__wheel-wrapper">
+      <div class="circular-nav__wheel" data-nav-wheel>
+        <button type="button" class="circular-nav__item" data-nav-item>ABC</button>
+        <button type="button" class="circular-nav__item" data-nav-item>DEF</button>
+        <button type="button" class="circular-nav__item" data-nav-item>GHI</button>
+        <button type="button" class="circular-nav__item" data-nav-item>JKL</button>
+        <button type="button" class="circular-nav__item" data-nav-item>NMO</button>
+        <button type="button" class="circular-nav__item" data-nav-item>PQR</button>
+      </div>
+      <button type="button" class="circular-nav__close" aria-label="メニューを閉じる" data-nav-close></button>
+    </div>
+  </div>
+
+  <main id="top"></main>
+  <section class="scroll-spacer" aria-hidden="true"></section>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
