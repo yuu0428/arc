@@ -5,6 +5,7 @@
   const menuToggleButton = document.querySelector('.menu-toggle');
   const circularNav = document.querySelector('[data-circular-nav]');
   const guideBox = document.getElementById('guide-box');
+  const heroBackdrop = document.querySelector('.hero-backdrop');
   if (!header || !logo || !logoImg || !menuToggleButton || !circularNav || !guideBox) {
     return;
   }
@@ -50,11 +51,6 @@
     return { r, g, b, a };
   };
 
-  const parsePixels = (value) => {
-    const parsed = parseFloat(value);
-    return Number.isNaN(parsed) ? 0 : parsed;
-  };
-
   const resolveBackgroundColor = (element, depth = 0) => {
     if (!element || depth > 10) {
       return parseRGB(getComputedStyle(document.body).backgroundColor) || { r: 255, g: 255, b: 255, a: 1 };
@@ -75,13 +71,15 @@
 
     let sampledColor = null;
 
-    const beforeStyle = getComputedStyle(document.body, '::before');
-    if (beforeStyle) {
-      const overlayHeight = parsePixels(beforeStyle.height);
-      const overlayOpacity = parseFloat(beforeStyle.opacity || '1');
-      const overlayColor = parseRGB(beforeStyle.backgroundColor);
-      if (overlayHeight > 0 && sampleY <= overlayHeight && overlayOpacity > 0 && overlayColor) {
-        sampledColor = overlayColor;
+    if (heroBackdrop) {
+      const heroRect = heroBackdrop.getBoundingClientRect();
+      if (
+        sampleX >= heroRect.left &&
+        sampleX <= heroRect.right &&
+        sampleY >= heroRect.top &&
+        sampleY <= heroRect.bottom
+      ) {
+        sampledColor = parseRGB(getComputedStyle(heroBackdrop).backgroundColor);
       }
     }
 

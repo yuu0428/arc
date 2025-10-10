@@ -12,6 +12,7 @@
 # Scope
 - HTML, CSS, JavaScript ファイルのすべてを出力・更新対象とする。  
 - 必要に応じて複数ファイル構成（例：`index.html`, `style.css`, `script.js`）で出力し、htmlにできる限りcss,jsなどを書き込まないこと。
+- 変更をする度にgit pushすること
 
 # Constraints
 - 基本仕様はスマホ優先（mobile-first）とする。
