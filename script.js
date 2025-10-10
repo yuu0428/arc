@@ -447,9 +447,9 @@
         const isActive = index === activeIndex;
         const opacity = isActive ? 1 : 0.85;
 
-        const itemDistance = navState.radius + Math.max(rect.width * 0.16, 60);
+        const itemDistance = Math.max(navState.radius * 0.68, navState.radius - 80);
         const displayAngle = angle + navState.displayOffset;
-        const transform = `translate(-50%, -100%) rotate(${displayAngle.toFixed(3)}deg) translateX(${itemDistance.toFixed(3)}px) rotate(180deg) scale(${scale.toFixed(3)})`;
+        const transform = `translate(-50%, -45%) rotate(${displayAngle.toFixed(3)}deg) translateX(${itemDistance.toFixed(3)}px) rotate(180deg) scale(${scale.toFixed(3)})`;
         item.style.transform = transform;
         item.style.opacity = opacity;
         item.style.zIndex = String(100 + Math.round(proximity * 100));
