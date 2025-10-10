@@ -30,14 +30,14 @@
   position: absolute;
   left: 50%;
   top: calc(var(--hero-circle-top) + var(--hero-circle-size) + var(--hero-guide-gap));
-  width: clamp(260px, 90vw, 600px);
-  min-height: clamp(120px, 18vh, 180px);
+  width: clamp(280px, 90vw, 640px);
+  min-height: clamp(130px, 18vh, 200px);
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: clamp(2.4rem, 6vw, 5.4rem);
+  font-size: clamp(2.6rem, 7vw, 5.8rem);
   font-weight: 800;
   color: #ffffff;
   letter-spacing: clamp(0.08em, 2.2vw, 0.14em);
@@ -83,12 +83,12 @@
   --color-bg: #f8f9fb;
   --header-surface: rgba(248, 249, 251, 0.92);
   --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.08);
-  --menu-diameter: clamp(340px, 70vw, 640px);
-  --hero-circle-top: clamp(90px, 18vh, 200px);
-  --hero-circle-size: clamp(360px, 82vw, 760px);
-  --hero-overlay-size: clamp(180px, 40vw, 320px);
-  --hero-guide-gap: clamp(80px, 12vh, 240px);
-  --menu-center-top: clamp(80px, 16vh, 150px);
+  --menu-diameter: clamp(420px, 50vw, 720px);
+  --hero-circle-top: clamp(80px, 15vh, 180px);
+  --hero-circle-size: clamp(360px, 80vw, 780px);
+  --hero-overlay-size: clamp(200px, 42vw, 340px);
+  --hero-guide-gap: clamp(100px, 14vh, 260px);
+  --menu-center-top: clamp(90px, 16vh, 160px);
 }
 
 * {
@@ -193,7 +193,7 @@ body.nav-open {
   position: fixed;
   top: 16px;
   left: 16px;
-  z-index: 120;
+  z-index: 240;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -263,11 +263,10 @@ body.nav-open {
 .circular-nav__wheel-wrapper {
   position: absolute;
   top: var(--menu-center-top);
-  right: 0;
+  right: calc(-0.5 * var(--menu-diameter));
   width: var(--menu-diameter);
   height: var(--menu-diameter);
-  transform: translate(50%, -50%);
-  transform-origin: 100% 0;
+  transform: translate(0, -50%);
   display: grid;
   place-items: center;
   pointer-events: none;
@@ -330,7 +329,7 @@ body.nav-open {
   letter-spacing: clamp(0.06em, 1.6vw, 0.12em);
   font-weight: 700;
   white-space: nowrap;
-  transform: translate(-50%, -35%) scale(0.96);
+  transform: translate(-50%, -40%) scale(0.96);
   transition: transform 160ms ease, opacity 160ms ease, color 160ms ease, text-shadow 160ms ease;
   pointer-events: auto;
   user-select: none;
@@ -343,7 +342,7 @@ body.nav-open {
 .circular-nav__item.is-active {
   color: #fff7d6;
   text-shadow: 0 12px 32px rgba(37, 99, 235, 0.55);
-  transform: translate(-50%, -35%) scale(1.08);
+  transform: translate(-50%, -40%) scale(1.08);
 }
 
 .circular-nav__close {
