@@ -5,24 +5,22 @@
   border: 2px dashed rgba(255, 114, 94, 0.9);
   box-shadow: 0 0 0 1px rgba(255, 114, 94, 0.3);
   background: transparent;
-  width: var(--guide-width);
-  height: clamp(110px, 20vh, 180px);
-  left: 50%;
-  top: calc(var(--circle-top) + var(--circle-size) + var(--guide-offset));
-  transform: translateX(-50%);
+  left: 35px;
+  top: 1050px;
+  width: 400px;
+  height: 150px;
   transition: box-shadow 0.2s ease;
 }
 
 .logo-placement {
   position: absolute;
   left: 50%;
-  top: var(--circle-top);
-  width: var(--circle-size);
+  top: var(--hero-circle-top);
+  width: var(--hero-circle-size);
   aspect-ratio: 1 / 1;
-  z-index: 25;
-  display: block;
-  pointer-events: none;
   transform: translateX(-50%);
+  z-index: 25;
+  pointer-events: none;
   transform-origin: 50% 50%;
   animation: spin-circle 18s linear infinite;
 }
@@ -30,18 +28,18 @@
 .guide-text {
   position: absolute;
   left: 50%;
-  top: calc(var(--circle-top) + var(--circle-size) + var(--guide-offset));
-  width: var(--guide-width);
-  height: clamp(110px, 20vh, 180px);
+  top: calc(var(--hero-circle-top) + var(--hero-circle-size) + var(--hero-guide-gap));
+  width: clamp(260px, 90vw, 600px);
+  min-height: clamp(120px, 18vh, 180px);
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: clamp(2.4rem, 6vw, 5.2rem);
+  font-size: clamp(2.4rem, 6vw, 5.4rem);
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: 0.14em;
+  letter-spacing: clamp(0.08em, 2.2vw, 0.14em);
   text-transform: uppercase;
   z-index: 28;
   pointer-events: none;
@@ -59,12 +57,11 @@
 .logo-overlay {
   position: absolute;
   left: 50%;
-  top: calc(var(--circle-top) + (var(--circle-size) - var(--overlay-size)) / 2);
-  width: var(--overlay-size);
+  top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) / 2);
+  width: var(--hero-overlay-size);
   aspect-ratio: 1 / 1;
   transform: translateX(-50%);
   z-index: 26;
-  display: block;
   pointer-events: none;
 }
 
@@ -73,7 +70,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(var(--circle-top) + var(--circle-size) + var(--guide-offset) + 320px);
+  height: calc(var(--hero-circle-top) + var(--hero-circle-size) + var(--hero-guide-gap) + 320px);
   background: #000;
   z-index: 0;
   pointer-events: none;
@@ -85,12 +82,11 @@
   --color-bg: #f8f9fb;
   --header-surface: rgba(248, 249, 251, 0.92);
   --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.08);
-  --menu-diameter: 60vh;
-  --circle-size: clamp(320px, 80vw, 720px);
-  --circle-top: clamp(100px, 20vh, 180px);
-  --overlay-size: clamp(160px, 35vw, 260px);
-  --guide-offset: clamp(80px, 12vh, 220px);
-  --guide-width: clamp(240px, 75vw, 650px);
+  --menu-diameter: clamp(280px, 70vw, 520px);
+  --hero-circle-top: clamp(100px, 18vh, 200px);
+  --hero-circle-size: clamp(320px, 80vw, 720px);
+  --hero-overlay-size: clamp(140px, 36vw, 260px);
+  --hero-guide-gap: clamp(80px, 12vh, 220px);
 }
 
 * {
@@ -107,7 +103,7 @@ body {
   background: var(--color-bg);
   line-height: 1.6;
   position: relative;
-  min-height: 5500px;
+  min-height: 200vh;
 }
 
 body.nav-open {
@@ -263,11 +259,11 @@ body.nav-open {
 
 .circular-nav__wheel-wrapper {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: clamp(40px, 12vh, 140px);
+  left: 0;
   width: var(--menu-diameter);
   height: var(--menu-diameter);
-  transform: translate(50%, -50%);
+  transform: translate(-50%, 0);
   display: grid;
   place-items: center;
   pointer-events: none;
