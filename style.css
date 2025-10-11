@@ -58,9 +58,9 @@
   position: absolute;
   left: 50%;
   top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) / 2);
-  width: var(--hero-overlay-size);
+  /* width: var(--hero-overlay-size); */
   /* aspect-ratio: 1 / 1; */
-  /* transform: translateX(-50%); */
+  transform: translateX(-50%);
   z-index: 26;
   pointer-events: none;
 }
