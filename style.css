@@ -58,8 +58,8 @@
   position: absolute;
   left: 50%;
   text-align: center;
-  top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) / 2);
-  width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.74), 88vw);
+  top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) * 0.55);
+  width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.64), 82vw);
   height: auto;
   transform: translateX(-50%);
   z-index: 26;
@@ -381,7 +381,7 @@ body.nav-open {
   }
 
   .logo-overlay {
-    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.7), 80vw);
+    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.62), 74vw);
   }
 
   .guide-text {
@@ -428,7 +428,7 @@ body.nav-open {
   }
 
   .logo-overlay {
-    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.74), 88vw);
+    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.64), 82vw);
   }
 
   .logo-fixed {
