@@ -4,9 +4,8 @@
   const logoImg = logo?.querySelector('img');
   const menuToggleButton = document.querySelector('.menu-toggle');
   const circularNav = document.querySelector('[data-circular-nav]');
-  const guideBox = document.getElementById('guide-box');
   const heroBackdrop = document.querySelector('.hero-backdrop');
-  if (!header || !logo || !logoImg || !menuToggleButton || !circularNav || !guideBox) {
+  if (!header || !logo || !logoImg || !menuToggleButton || !circularNav) {
     return;
   }
 
@@ -155,7 +154,6 @@
   runInitialContrastCheck();
 
   initializeCircularNav();
-  positionGuideBox();
 
   function initializeCircularNav() {
     const overlay = circularNav;
@@ -519,12 +517,5 @@
       open: openNav,
       close: closeNav,
     };
-  }
-
-  function positionGuideBox() {
-    guideBox.style.left = `${parseFloat(getComputedStyle(guideBox).left) || 200}px`;
-    guideBox.style.top = `${parseFloat(getComputedStyle(guideBox).top) || 160}px`;
-    guideBox.style.width = `${parseFloat(getComputedStyle(guideBox).width) || 320}px`;
-    guideBox.style.height = `${parseFloat(getComputedStyle(guideBox).height) || 240}px`;
   }
 })();
