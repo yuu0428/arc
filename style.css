@@ -17,6 +17,7 @@
   left: 50%;
   top: var(--hero-circle-top);
   width: var(--hero-circle-size);
+  max-width: 90vw;
   aspect-ratio: 1 / 1;
   transform: translateX(-50%);
   z-index: 25;
@@ -59,8 +60,9 @@
   left: 50%;
   text-align: center;
   top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) / 2);
-  /* width: var(--hero-overlay-size); */
-  /* aspect-ratio: 1 / 1; */
+  width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.74));
+  max-width: 82vw;
+  height: auto;
   transform: translateX(-50%);
   z-index: 26;
   pointer-events: none;
@@ -69,9 +71,11 @@
 .hero-backdrop {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: calc(var(--hero-circle-top) + var(--hero-circle-size) + var(--hero-guide-gap) + 320px);
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  height: calc(var(--hero-circle-top) + var(--hero-circle-size) + var(--hero-guide-gap) + 360px);
+  min-height: 100vh;
   background: #000;
   z-index: 0;
   pointer-events: none;
@@ -362,4 +366,27 @@ body.nav-open {
 .circular-nav__close:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+}
+
+@media (max-width: 600px) {
+  :root {
+    --hero-circle-top: clamp(52px, 12vh, 120px);
+    --hero-circle-size: clamp(220px, 82vw, 300px);
+    --hero-overlay-size: clamp(140px, 56vw, 210px);
+    --hero-guide-gap: clamp(60px, 14vh, 140px);
+    --menu-diameter: clamp(280px, 84vw, 340px);
+    --menu-center-top: calc(var(--hero-circle-top) + var(--hero-circle-size) * 0.38);
+  }
+
+  .guide-text {
+    width: clamp(220px, 92vw, 360px);
+    font-size: clamp(1.8rem, 8vw, 3.2rem);
+    letter-spacing: clamp(0.05em, 1.2vw, 0.1em);
+  }
+
+  .circular-nav__wheel-wrapper {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+  }
 }

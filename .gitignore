@@ -1,3 +1,9 @@
 prompt.md
 AGENTS.md
 log.md
+prompt/
+reports/
+scripts/
+node_modules/
+package-lock.json
+circular-nav-standalone.html
