@@ -58,10 +58,10 @@
   position: absolute;
   left: 50%;
   text-align: center;
-  top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) * 0.55);
-  width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.64), 82vw);
+  top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) * 0.58);
+  width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.62), 80vw);
   height: auto;
-  transform: translateX(-50%);
+  transform: translate(-50%, 2%);
   z-index: 26;
   pointer-events: none;
 }
