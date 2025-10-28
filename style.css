@@ -382,11 +382,6 @@ body.nav-open {
     letter-spacing: clamp(0.05em, 1.3vw, 0.1em);
   }
 
-  .guide-text {
-    width: clamp(240px, 88vw, 520px);
-    font-size: clamp(2rem, 5.6vw, 4.2rem);
-  }
-
   .circular-nav__wheel-wrapper {
     left: 50%;
     right: auto;
@@ -462,12 +457,6 @@ body.nav-open {
   .menu-toggle span::before,
   .menu-toggle span::after {
     width: 20px;
-  }
-
-  .guide-text {
-    width: clamp(220px, 92vw, 360px);
-    font-size: clamp(1.8rem, 8vw, 3.2rem);
-    letter-spacing: clamp(0.05em, 1.2vw, 0.1em);
   }
 
   .circular-nav__wheel-wrapper {
