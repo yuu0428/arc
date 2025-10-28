@@ -71,9 +71,8 @@
 .hero-backdrop {
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   height: calc(var(--hero-circle-top) + var(--hero-circle-size) + var(--hero-guide-gap) + 360px);
   min-height: 100vh;
   background: #000;
