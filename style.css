@@ -16,8 +16,7 @@
   position: absolute;
   left: 50%;
   top: var(--hero-circle-top);
-  width: var(--hero-circle-size);
-  max-width: 90vw;
+  width: min(var(--hero-circle-size), 94vw);
   aspect-ratio: 1 / 1;
   transform: translateX(-50%);
   z-index: 25;
@@ -60,8 +59,7 @@
   left: 50%;
   text-align: center;
   top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) / 2);
-  width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.74));
-  max-width: 82vw;
+  width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.74), 88vw);
   height: auto;
   transform: translateX(-50%);
   z-index: 26;
@@ -379,11 +377,11 @@ body.nav-open {
   }
 
   .logo-placement {
-    max-width: 84vw;
+    width: min(var(--hero-circle-size), 90vw);
   }
 
   .logo-overlay {
-    max-width: 72vw;
+    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.7), 80vw);
   }
 
   .guide-text {
@@ -418,19 +416,19 @@ body.nav-open {
 @media (max-width: 600px) {
   :root {
     --hero-circle-top: clamp(52px, 12vh, 120px);
-    --hero-circle-size: clamp(220px, 82vw, 300px);
-    --hero-overlay-size: clamp(140px, 56vw, 210px);
+    --hero-circle-size: clamp(260px, 96vw, 360px);
+    --hero-overlay-size: clamp(170px, 70vw, 260px);
     --hero-guide-gap: clamp(60px, 14vh, 140px);
     --menu-diameter: clamp(280px, 84vw, 340px);
     --menu-center-top: calc(var(--hero-circle-top) + var(--hero-circle-size) * 0.38);
   }
 
   .logo-placement {
-    max-width: min(78vw, 280px);
+    width: min(var(--hero-circle-size), 94vw);
   }
 
   .logo-overlay {
-    max-width: min(66vw, 220px);
+    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.74), 88vw);
   }
 
   .logo-fixed {
