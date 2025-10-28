@@ -58,10 +58,10 @@
   position: absolute;
   left: 50%;
   text-align: center;
-  top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) * 0.58);
-  width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.62), 80vw);
+  top: calc(var(--hero-circle-top) + (var(--hero-circle-size) - var(--hero-overlay-size)) / 2 - var(--hero-circle-size) * 0.45);
+  width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.5), 76vw);
   height: auto;
-  transform: translate(-50%, 2%);
+  transform: translate(-50%, 0%);
   z-index: 26;
   pointer-events: none;
 }
@@ -381,7 +381,7 @@ body.nav-open {
   }
 
   .logo-overlay {
-    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.62), 74vw);
+    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.52), 74vw);
   }
 
   .guide-text {
@@ -428,7 +428,7 @@ body.nav-open {
   }
 
   .logo-overlay {
-    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.64), 82vw);
+    width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.56), 80vw);
   }
 
   .logo-fixed {
