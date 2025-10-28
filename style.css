@@ -24,7 +24,7 @@
   position: absolute;
   left: 50%;
   text-align: center;
-  top: calc(var(--hero-circle-top) + var(--hero-circle-size) / 2 + var(--hero-overlay-offset-y));
+  top: calc(var(--hero-circle-top) + var(--hero-circle-size) / 2);
   width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.46), 72vw);
   height: auto;
   transform: translate(-50%, var(--hero-overlay-translate-y));
@@ -72,7 +72,7 @@
   --header-surface: rgba(248, 249, 251, 0.92);
   --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.08);
   --menu-diameter: clamp(420px, 50vw, 720px);
-  --hero-circle-top: clamp(80px, 15vh, 180px);
+  --hero-circle-top: 50vh;
   --hero-circle-size: clamp(360px, 80vw, 780px);
   --hero-overlay-size: clamp(200px, 42vw, 340px);
   --menu-center-top: clamp(90px, 16vh, 160px);
