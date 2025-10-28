@@ -392,6 +392,14 @@ body.nav-open {
     font-size: clamp(2rem, 5.6vw, 4.2rem);
   }
 
+  .circular-nav__wheel-wrapper {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    max-width: clamp(340px, 66vw, 480px);
+    max-height: clamp(340px, 66vw, 480px);
+  }
+
   .header-inner {
     width: min(100% - 2.4rem, 960px);
     min-height: 88px;
