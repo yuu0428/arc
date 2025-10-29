@@ -264,8 +264,8 @@ body.nav-open {
 
 .circular-nav__wheel-wrapper {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: calc(var(--menu-center-top) - var(--menu-diameter) / 2);
+  right: calc(-0.5 * var(--menu-diameter));
   width: var(--menu-diameter);
   height: var(--menu-diameter);
   display: grid;
