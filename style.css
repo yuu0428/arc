@@ -1,3 +1,14 @@
+.walking-person {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--hero-circle-top) - var(--hero-walking-person-size));
+  width: var(--hero-walking-person-size);
+  height: auto;
+  transform: translateX(-50%);
+  z-index: 23;
+  pointer-events: none;
+}
+
 .logo-placement {
   position: absolute;
   left: 50%;
@@ -24,7 +35,7 @@
   position: absolute;
   left: 50%;
   text-align: center;
-  top: calc(var(--hero-circle-top) + var(--hero-circle-size) / 2);
+  top: calc(var(--hero-circle-top) + (var(--hero-circle-size) / 2) - (var(--hero-overlay-offset-y) / 2));
   width: min(var(--hero-overlay-size), calc(var(--hero-circle-size) * 0.46), 72vw);
   height: auto;
   transform: translate(-50%, var(--hero-overlay-translate-y));
@@ -76,7 +87,7 @@
   --hero-circle-size: clamp(360px, 80vw, 780px);
   --hero-overlay-size: clamp(200px, 42vw, 340px);
   --menu-center-top: clamp(90px, 16vh, 160px);
-  --hero-tagline-gap: clamp(80px, 16vh, 220px);
+  --hero-tagline-gap: clamp(80px, 14vh, 220px);
   --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.22);
   --hero-overlay-translate-y: -30%;
 }
@@ -253,11 +264,10 @@ body.nav-open {
 
 .circular-nav__wheel-wrapper {
   position: absolute;
-  top: var(--menu-center-top);
-  right: calc(-0.5 * var(--menu-diameter));
+  top: 0px;
+  right: 0px;
   width: var(--menu-diameter);
   height: var(--menu-diameter);
-  transform: translate(0, -50%);
   display: grid;
   place-items: center;
   pointer-events: none;
@@ -408,10 +418,11 @@ body.nav-open {
 
 @media (max-width: 600px) {
   :root {
-    --hero-circle-top: clamp(52px, 12vh, 120px);
+    --hero-walking-person-size: clamp(10px, 5vh, 100px);
+    --hero-circle-top: clamp(52px, 15vh, 150px);
     --hero-circle-size: clamp(260px, 96vw, 360px);
     --hero-overlay-size: clamp(170px, 70vw, 260px);
-    --hero-tagline-gap: clamp(60px, 18vh, 160px);
+    --hero-tagline-gap: clamp(60px, 12vh, 160px);
     --menu-diameter: clamp(280px, 84vw, 340px);
     --menu-center-top: calc(var(--hero-circle-top) + var(--hero-circle-size) * 0.38);
     --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.12);
@@ -460,9 +471,7 @@ body.nav-open {
   }
 
   .circular-nav__wheel-wrapper {
-    left: 50%;
-    right: auto;
-    transform: translate(-50%, -50%);
+    right: 0px;
     max-width: 86vw;
     max-height: 86vw;
   }
