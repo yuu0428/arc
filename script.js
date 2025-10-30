@@ -9,6 +9,10 @@
     return;
   }
 
+  if (menuToggleButton.parentElement !== document.body) {
+    document.body.appendChild(menuToggleButton);
+  }
+
   let lastScrollY = window.pageYOffset;
   let ticking = false;
   let isMenuOpen = false;
@@ -68,31 +72,46 @@
     return resolveBackgroundColor(element.parentElement, depth + 1);
   };
 
+  const sampleColorAtPoint = (x, y, ignoreElements = []) => {
+    if (heroBackdrop) {
+      const heroRect = heroBackdrop.getBoundingClientRect();
+      if (x >= heroRect.left && x <= heroRect.right && y >= heroRect.top && y <= heroRect.bottom) {
+        const backdropColor = parseRGB(getComputedStyle(heroBackdrop).backgroundColor);
+        if (backdropColor) {
+          return backdropColor;
+        }
+      }
+    }
+
+    const suppressed = [];
+    ignoreElements.forEach((element) => {
+      if (!(element instanceof Element)) {
+        return;
+      }
+      suppressed.push({ element, previous: element.style.pointerEvents });
+      element.style.pointerEvents = 'none';
+    });
+
+    let elementBeneath = null;
+    try {
+      elementBeneath = document.elementFromPoint(x, y);
+    } catch (error) {
+      elementBeneath = null;
+    } finally {
+      suppressed.forEach(({ element, previous }) => {
+        element.style.pointerEvents = previous;
+      });
+    }
+
+    return resolveBackgroundColor(elementBeneath) || resolveBackgroundColor(document.body);
+  };
+
   const evaluateLogoContrast = () => {
     const rect = logo.getBoundingClientRect();
     const sampleX = rect.left + rect.width / 2;
     const sampleY = rect.top + rect.height / 2;
 
-    let sampledColor = null;
-
-    if (heroBackdrop) {
-      const heroRect = heroBackdrop.getBoundingClientRect();
-      if (
-        sampleX >= heroRect.left &&
-        sampleX <= heroRect.right &&
-        sampleY >= heroRect.top &&
-        sampleY <= heroRect.bottom
-      ) {
-        sampledColor = parseRGB(getComputedStyle(heroBackdrop).backgroundColor);
-      }
-    }
-
-    if (!sampledColor) {
-      logo.classList.add('is-sampling');
-      const elementBeneath = document.elementFromPoint(sampleX, sampleY);
-      logo.classList.remove('is-sampling');
-      sampledColor = resolveBackgroundColor(elementBeneath) || resolveBackgroundColor(document.body);
-    }
+    const sampledColor = sampleColorAtPoint(sampleX, sampleY, [logo]);
 
     const { r, g, b } = sampledColor || { r: 255, g: 255, b: 255, a: 1 };
     const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
@@ -116,21 +135,37 @@
     }
   };
 
-  const handleScroll = () => {
-    if (isMenuOpen) {
+  const evaluateMenuToggleContrast = () => {
+    const rect = menuToggleButton.getBoundingClientRect();
+    if (!rect.width || !rect.height) {
       return;
     }
+
+    const sampleX = rect.left + rect.width / 2;
+    const sampleY = rect.top + rect.height / 2;
+
+    const sampledColor = sampleColorAtPoint(sampleX, sampleY, [menuToggleButton]);
+    const { r, g, b } = sampledColor || { r: 255, g: 255, b: 255, a: 1 };
+    const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+    const shouldInvert = luminance <= 0.35;
+    menuToggleButton.classList.toggle('is-inverted', shouldInvert);
+  };
+
+  const handleScroll = () => {
     const currentY = window.pageYOffset;
     const delta = currentY - lastScrollY;
 
-    if (delta > 6 && currentY > 120) {
-      header.setAttribute('data-hidden', 'true');
-    } else if (delta < -6 || currentY <= 120) {
-      header.setAttribute('data-hidden', 'false');
+    if (!isMenuOpen) {
+      if (delta > 6 && currentY > 120) {
+        header.setAttribute('data-hidden', 'true');
+      } else if (delta < -6 || currentY <= 120) {
+        header.setAttribute('data-hidden', 'false');
+      }
     }
 
     lastScrollY = currentY;
     evaluateLogoContrast();
+    evaluateMenuToggleContrast();
   };
 
   const onScroll = () => {
@@ -144,9 +179,17 @@
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => window.requestAnimationFrame(evaluateLogoContrast));
+  window.addEventListener(
+    'resize',
+    () =>
+      window.requestAnimationFrame(() => {
+        evaluateLogoContrast();
+        evaluateMenuToggleContrast();
+      })
+  );
   const runInitialContrastCheck = () => {
     evaluateLogoContrast();
+    evaluateMenuToggleContrast();
   };
 
   document.addEventListener('DOMContentLoaded', runInitialContrastCheck);
@@ -268,6 +311,7 @@
       document.body.classList.add('nav-open');
       menuToggleButton.setAttribute('aria-expanded', 'true');
       menuToggleButton.setAttribute('aria-label', 'メニューを閉じる');
+      evaluateMenuToggleContrast();
       focusActiveItem();
       document.addEventListener('keydown', handleKeydown);
     }
@@ -303,6 +347,7 @@
       } else {
         menuToggleButton.focus({ preventScroll: true });
       }
+      evaluateMenuToggleContrast();
     }
 
     function handleKeydown(event) {
