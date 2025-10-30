@@ -45,7 +45,7 @@
 
 .hero-tagline {
   position: absolute;
-  left: 50%;
+  left: calc(50% + 5.6vw);
   top: calc(var(--hero-circle-top) + var(--hero-circle-size) + var(--hero-tagline-gap));
   width: clamp(280px, 88vw, 620px);
   min-height: clamp(120px, 18vh, 220px);
@@ -501,7 +501,7 @@ body.nav-open {
     --hero-circle-top: clamp(52px, 15vh, 150px);
     --hero-circle-size: clamp(260px, 96vw, 360px);
     --hero-overlay-size: clamp(170px, 70vw, 260px);
-    --hero-tagline-gap: clamp(60px, 12vh, 160px);
+    --hero-tagline-gap: clamp(60px, 7vh, 160px);
     --menu-diameter: 120vw;
     --menu-center-top: calc(var(--hero-circle-top) + var(--hero-circle-size) * 0.38);
     --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.12);
