@@ -1,3 +1,35 @@
+.hero-scroll {
+  position: relative;
+  min-height: calc(100vh + 120vh);
+  padding-top: 100vh;
+}
+
+.hero-viewport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.hero-overlay-panel {
+  position: relative;
+  z-index: 40;
+  background: var(--color-bg);
+  min-height: 140vh;
+}
+
+.hero-scroll.is-released {
+  padding-top: 0;
+}
+
+.hero-scroll.is-released .hero-viewport {
+  position: relative;
+}
+
 .walking-person {
   position: absolute;
   left: 50%;
@@ -223,9 +255,14 @@ body.nav-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
   box-shadow: var(--menu-toggle-shadow);
   z-index: 260;
+}
+
+.menu-toggle[aria-expanded="true"] {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .menu-toggle:hover,

@@ -5,6 +5,9 @@
   const menuToggleButton = document.querySelector('.menu-toggle');
   const circularNav = document.querySelector('[data-circular-nav]');
   const heroBackdrop = document.querySelector('.hero-backdrop');
+  const heroScrollSection = document.querySelector('.hero-scroll');
+  const heroViewport = heroScrollSection?.querySelector('.hero-viewport') || null;
+  const heroOverlayPanel = heroScrollSection?.querySelector('.hero-overlay-panel') || null;
   if (!header || !logo || !logoImg || !menuToggleButton || !circularNav) {
     return;
   }
@@ -16,6 +19,7 @@
   let lastScrollY = window.pageYOffset;
   let ticking = false;
   let isMenuOpen = false;
+  let heroReleased = false;
 
   menuToggleButton.setAttribute('aria-expanded', 'false');
 
@@ -151,6 +155,20 @@
     menuToggleButton.classList.toggle('is-inverted', shouldInvert);
   };
 
+  const updateHeroReleaseState = () => {
+    if (!heroScrollSection || !heroViewport || !heroOverlayPanel) {
+      return;
+    }
+
+    const overlayRect = heroOverlayPanel.getBoundingClientRect();
+    const shouldRelease = overlayRect.top <= 0;
+
+    if (shouldRelease !== heroReleased) {
+      heroReleased = shouldRelease;
+      heroScrollSection.classList.toggle('is-released', heroReleased);
+    }
+  };
+
   const handleScroll = () => {
     const currentY = window.pageYOffset;
     const delta = currentY - lastScrollY;
@@ -164,6 +182,7 @@
     }
 
     lastScrollY = currentY;
+    updateHeroReleaseState();
     evaluateLogoContrast();
     evaluateMenuToggleContrast();
   };
@@ -183,11 +202,13 @@
     'resize',
     () =>
       window.requestAnimationFrame(() => {
+        updateHeroReleaseState();
         evaluateLogoContrast();
         evaluateMenuToggleContrast();
       })
   );
   const runInitialContrastCheck = () => {
+    updateHeroReleaseState();
     evaluateLogoContrast();
     evaluateMenuToggleContrast();
   };

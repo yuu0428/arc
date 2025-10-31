@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="hero-backdrop" aria-hidden="true"></div>
-
   <a class="logo-fixed" href="#top">
     <img src="images/logo1.jpg" data-src-default="images/logo1.jpg" data-src-light="images/logo1.jpg" data-src-dark="images/logo11.jpg" alt="logo" />
   </a>
@@ -21,17 +19,23 @@
     </div>
   </header>
 
-  <img class="walking-person" src="images/walking_person.jpg" alt="walkingperson" />
-  <img class="logo-placement" src="images/circul.jpg" alt="circul" />
-  <img class="logo-overlay" src="images/logo11.jpg" alt="logo11" />
-  <div class="hero-tagline">
-    <span>放課後、</span>
-    <span class="hero-tagline__line">
-      地域で奮闘中
-      <span class="hero-tagline__ellipsis" aria-hidden="true"></span>
-      <span class="visually-hidden">...</span>
-    </span>
-  </div>
+  <section class="hero-scroll">
+    <div class="hero-viewport">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <img class="walking-person" src="images/walking_person.jpg" alt="walkingperson" />
+      <img class="logo-placement" src="images/circul.jpg" alt="circul" />
+      <img class="logo-overlay" src="images/logo11.jpg" alt="logo11" />
+      <div class="hero-tagline">
+        <span>放課後、</span>
+        <span class="hero-tagline__line">
+          地域で奮闘中
+          <span class="hero-tagline__ellipsis" aria-hidden="true"></span>
+          <span class="visually-hidden">...</span>
+        </span>
+      </div>
+    </div>
+    <div class="hero-overlay-panel" aria-hidden="true"></div>
+  </section>
 
   <div class="circular-nav" id="circular-nav" data-circular-nav role="dialog" aria-modal="true" aria-hidden="true" hidden>
     <button class="circular-nav__backdrop" type="button" aria-label="メニューを閉じる" data-nav-close></button>
