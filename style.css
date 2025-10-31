@@ -4,6 +4,19 @@
   padding-top: 100vh;
 }
 
+.hero-scroll::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100vh;
+  min-height: 140vh;
+  background: var(--color-bg);
+  z-index: 40;
+  pointer-events: none;
+  opacity: 1;
+}
+
 .hero-viewport {
   position: fixed;
   top: 0;
@@ -15,19 +28,16 @@
   z-index: 20;
 }
 
-.hero-overlay-panel {
-  position: relative;
-  z-index: 40;
-  background: var(--color-bg);
-  min-height: 140vh;
-}
-
 .hero-scroll.is-released {
   padding-top: 0;
 }
 
 .hero-scroll.is-released .hero-viewport {
   position: relative;
+}
+
+.hero-scroll.is-released::after {
+  opacity: 0;
 }
 
 .walking-person {
@@ -205,7 +215,7 @@ body {
   background: var(--color-bg);
   line-height: 1.6;
   position: relative;
-  min-height: 200vh;
+  min-height: 1000svh;
   overflow-x: hidden;
 }
 

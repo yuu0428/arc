@@ -7,7 +7,6 @@
   const heroBackdrop = document.querySelector('.hero-backdrop');
   const heroScrollSection = document.querySelector('.hero-scroll');
   const heroViewport = heroScrollSection?.querySelector('.hero-viewport') || null;
-  const heroOverlayPanel = heroScrollSection?.querySelector('.hero-overlay-panel') || null;
   if (!header || !logo || !logoImg || !menuToggleButton || !circularNav) {
     return;
   }
@@ -156,12 +155,14 @@
   };
 
   const updateHeroReleaseState = () => {
-    if (!heroScrollSection || !heroViewport || !heroOverlayPanel) {
+    if (!heroScrollSection || !heroViewport) {
       return;
     }
 
-    const overlayRect = heroOverlayPanel.getBoundingClientRect();
-    const shouldRelease = overlayRect.top <= 0;
+    const sectionRect = heroScrollSection.getBoundingClientRect();
+    const viewportRect = heroViewport.getBoundingClientRect();
+    const viewportHeight = viewportRect.height || window.innerHeight;
+    const shouldRelease = sectionRect.top + viewportHeight <= 0;
 
     if (shouldRelease !== heroReleased) {
       heroReleased = shouldRelease;
