@@ -19,6 +19,7 @@
   let ticking = false;
   let isMenuOpen = false;
   let heroReleased = false;
+  let heroProgress = 0;
 
   menuToggleButton.setAttribute('aria-expanded', 'false');
 
@@ -154,19 +155,27 @@
     menuToggleButton.classList.toggle('is-inverted', shouldInvert);
   };
 
-  const updateHeroReleaseState = () => {
+  const clamp01 = (value) => Math.max(0, Math.min(1, value));
+
+  const updateHeroProgress = () => {
     if (!heroScrollSection || !heroViewport) {
       return;
     }
 
     const sectionRect = heroScrollSection.getBoundingClientRect();
-    const viewportRect = heroViewport.getBoundingClientRect();
-    const viewportHeight = viewportRect.height || window.innerHeight;
-    const shouldRelease = sectionRect.top + viewportHeight <= 0;
+    const viewportHeight = window.innerHeight || heroViewport.getBoundingClientRect().height || 1;
+    const nextProgress = clamp01(-sectionRect.top / viewportHeight);
 
+    if (Math.abs(nextProgress - heroProgress) > 0.001) {
+      heroProgress = nextProgress;
+      heroScrollSection.style.setProperty('--hero-progress', heroProgress.toFixed(4));
+    }
+
+    const shouldRelease = heroProgress >= 0.98;
     if (shouldRelease !== heroReleased) {
       heroReleased = shouldRelease;
       heroScrollSection.classList.toggle('is-released', heroReleased);
+      heroScrollSection.classList.toggle('is-dismissed', heroReleased);
     }
   };
 
@@ -183,7 +192,7 @@
     }
 
     lastScrollY = currentY;
-    updateHeroReleaseState();
+    updateHeroProgress();
     evaluateLogoContrast();
     evaluateMenuToggleContrast();
   };
@@ -203,13 +212,13 @@
     'resize',
     () =>
       window.requestAnimationFrame(() => {
-        updateHeroReleaseState();
+        updateHeroProgress();
         evaluateLogoContrast();
         evaluateMenuToggleContrast();
       })
   );
   const runInitialContrastCheck = () => {
-    updateHeroReleaseState();
+    updateHeroProgress();
     evaluateLogoContrast();
     evaluateMenuToggleContrast();
   };

@@ -2,19 +2,8 @@
   position: relative;
   min-height: calc(100vh + 120vh);
   padding-top: 100vh;
-}
-
-.hero-scroll::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100vh;
-  min-height: 140vh;
   background: var(--color-bg);
-  z-index: 40;
-  pointer-events: none;
-  opacity: 1;
+  --hero-progress: 0;
 }
 
 .hero-viewport {
@@ -25,6 +14,9 @@
   height: 100vh;
   min-height: 100vh;
   overflow: hidden;
+  will-change: transform, opacity;
+  transform: translate3d(0, calc(var(--hero-progress) * var(--hero-slide-distance)), 0);
+  opacity: calc(1 - var(--hero-progress));
   z-index: 20;
 }
 
@@ -36,8 +28,8 @@
   position: relative;
 }
 
-.hero-scroll.is-released::after {
-  opacity: 0;
+.hero-scroll.is-dismissed .hero-viewport {
+  pointer-events: none;
 }
 
 .walking-person {
@@ -160,6 +152,10 @@
   pointer-events: none;
 }
 
+.hero-inline-text {
+  font-size: 100px;
+}
+
 
 
 :root {
@@ -174,6 +170,7 @@
   --hero-tagline-gap: clamp(80px, 14vh, 220px);
   --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.22);
   --hero-overlay-translate-y: -30%;
+  --hero-slide-distance: clamp(160px, 36vh, 480px);
   --menu-toggle-bg-default: rgba(0, 0, 0, 0.45);
   --menu-toggle-bg-hover-default: rgba(0, 0, 0, 0.7);
   --menu-toggle-border-default: rgba(255, 255, 255, 0.35);
@@ -360,11 +357,6 @@ body.nav-open {
 
 .logo-fixed.is-sampling {
   pointer-events: none;
-}
-
-.scroll-spacer {
-  min-height: 220vh;
-  background: #f5f5f5;
 }
 
 .circular-nav[hidden] {
