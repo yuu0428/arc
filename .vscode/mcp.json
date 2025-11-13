@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "chrome-devtools": {
+      "command": "node",
+      "args": [
+        "/Users/yura/Documents/arc/mcp_servers/chrome-devtools-mcp/build/src/index.js",
+        "--executablePath",
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      ]
+    }
+  }
+}

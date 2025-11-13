@@ -156,6 +156,38 @@
   font-size: 100px;
 }
 
+.about-heading,
+.about-text {
+  width: min(720px, 80vw);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.about-heading {
+  margin-top: clamp(48px, 14vw, 80px);
+  margin-bottom: 50vh;
+  font-size: clamp(2.2rem, 5.2vw, 3.4rem);
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+.about-text {
+  line-height: 2;
+}
+
+body.has-scroll-reveal .about-heading,
+body.has-scroll-reveal .about-text {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 2s ease, transform 2s ease;
+  will-change: opacity, transform;
+}
+
+body.has-scroll-reveal .about-heading.is-visible,
+body.has-scroll-reveal .about-text.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
 :root {
@@ -534,6 +566,15 @@ body.nav-open {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  body.has-scroll-reveal .about-heading,
+  body.has-scroll-reveal .about-text {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
 @media (max-width: 600px) {
   :root {
     --hero-walking-person-size: clamp(10px, 5vh, 100px);
@@ -560,6 +601,24 @@ body.nav-open {
     min-height: clamp(120px, 22vh, 180px);
     font-size: clamp(1.8rem, 7vw, 3.2rem);
     letter-spacing: clamp(0.04em, 1.1vw, 0.08em);
+  }
+.about{
+  display: block;
+}
+
+  .about-heading {
+    font-size: clamp(1.6rem, 10vw, 3rem);
+    line-height: 1.4;
+    max-width: 13ch;
+    margin-bottom: 50vh;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .about-text {
+    width: 60vw;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .logo-fixed {
