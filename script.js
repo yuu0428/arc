@@ -597,34 +597,50 @@
   }
 
   function initializeScrollReveal() {
-    const targets = document.querySelectorAll('.about-heading, .about-text');
+    const targets = Array.from(document.querySelectorAll('.about-heading, .about-text'));
     if (!targets.length) {
       return;
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (prefersReducedMotion.matches || typeof window.IntersectionObserver !== 'function') {
-      targets.forEach((target) => target.classList.add('is-visible'));
-      return;
-    }
 
-    document.body.classList.add('has-scroll-reveal');
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.4,
-        rootMargin: '0px 0px -10% 0px',
+    const updateFade = () => {
+      if (prefersReducedMotion.matches || !document.body.classList.contains('has-scroll-reveal')) {
+        targets.forEach((target) => target.style.removeProperty('--scroll-fade-progress'));
+        return;
       }
-    );
 
-    targets.forEach((target) => observer.observe(target));
+      const viewportHeight = window.innerHeight || 1;
+      const viewportCenter = viewportHeight / 2;
+      const range = Math.max(1, viewportCenter);
+
+      targets.forEach((target) => {
+        const rect = target.getBoundingClientRect();
+        const centerY = rect.top + rect.height / 2;
+        const distanceBelowCenter = Math.max(0, centerY - viewportCenter);
+        const progress = clamp01(1 - distanceBelowCenter / range);
+        target.style.setProperty('--scroll-fade-progress', progress.toFixed(3));
+      });
+    };
+
+    const applyMotionPreference = () => {
+      if (prefersReducedMotion.matches) {
+        document.body.classList.remove('has-scroll-reveal');
+        targets.forEach((target) => target.style.removeProperty('--scroll-fade-progress'));
+      } else {
+        document.body.classList.add('has-scroll-reveal');
+        updateFade();
+      }
+    };
+
+    applyMotionPreference();
+    prefersReducedMotion.addEventListener('change', applyMotionPreference);
+    window.addEventListener('scroll', () => {
+      window.requestAnimationFrame(updateFade);
+    }, { passive: true });
+    window.addEventListener('resize', () => {
+      window.requestAnimationFrame(updateFade);
+    });
+    updateFade();
   }
 })();

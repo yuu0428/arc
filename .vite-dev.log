@@ -1,0 +1,8 @@
+Port 5175 is in use, trying another one...
+
+  VITE v7.2.2  ready in 59 ms
+
+  ➜  Local:   http://localhost:5176/
+  ➜  Network: http://192.0.0.2:5176/
+  ➜  Network: http://169.254.180.90:5176/
+  ➜  press h + enter to show help
