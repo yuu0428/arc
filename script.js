@@ -229,6 +229,9 @@
 
   initializeCircularNav();
   initializeScrollReveal();
+  if (typeof window.initializeFallSim === 'function') {
+    window.initializeFallSim();
+  }
 
   function initializeCircularNav() {
     const overlay = circularNav;
@@ -689,4 +692,5 @@
     });
     updateFade();
   }
-})();
+
+  })();
