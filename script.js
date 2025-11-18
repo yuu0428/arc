@@ -333,6 +333,13 @@
         }
 
         event.preventDefault();
+        const targetSelector = item.getAttribute('data-target');
+        if (targetSelector) {
+          const target = document.querySelector(targetSelector);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
         closeNav();
       });
     });

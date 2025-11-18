@@ -175,6 +175,10 @@
   font-weight: 700;
 }
 
+#about {
+  scroll-margin-top: 7rem;
+}
+
 .about-text {
   line-height: 2;
 }

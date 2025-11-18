@@ -45,12 +45,13 @@
       やがて大きな<br>
       輪となるように
     </div>
+    <div id="about"></div>
     <div class="about-text">
       「Arc」という名前には、私たちは一人ひとりが小さな“孤”だけれど、仲間とつながることで大きな“縁（えん）”になれるという想いを込めています。また、物語の主人公の成長を描く“ストーリーアーク”のように、メンバーそれぞれが主役として成長し、地域の方々との関わりの中で私たち自身も変化していきたい。<br>――そんな願いをこの名前に託しました。
     </div>
     <a class="about-button" href="#top">view more</a>
     <img class="about-our-image" src="images/IMG_1.jpg">
-    <div class="about-greetings">
+    <div class="about-greetings" id="greatings">
       <div class="about-haruto">
         <img class="about-haruto-image" src="images/IMG_2.jpg" alt="haruto" />
         <div class="about-haruto-text">
@@ -76,9 +77,9 @@
     <button class="circular-nav__backdrop" type="button" aria-label="メニューを閉じる" data-nav-close></button>
     <div class="circular-nav__wheel-wrapper">
       <div class="circular-nav__wheel" data-nav-wheel>
-        <button type="button" class="circular-nav__item" data-nav-item>トップ</button>
-        <button type="button" class="circular-nav__item" data-nav-item>Arcとは</button>
-        <button type="button" class="circular-nav__item" data-nav-item>代表挨拶</button>
+        <button type="button" class="circular-nav__item" data-nav-item data-target="#top">トップ</button>
+        <button type="button" class="circular-nav__item" data-nav-item data-target="#about">Arcとは</button>
+        <button type="button" class="circular-nav__item" data-nav-item data-target="#greatings">代表挨拶</button>
         <button type="button" class="circular-nav__item" data-nav-item>JKL</button>
         <button type="button" class="circular-nav__item" data-nav-item>NMO</button>
         <button type="button" class="circular-nav__item" data-nav-item>PQR</button>
