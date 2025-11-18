@@ -205,11 +205,50 @@
   background-color: rgba(17, 24, 39, 0.72);
 }
 
+.about-our-image {
+  display: block;
+  width: 75vh;
+  padding-top: 15vh;
+  margin: 40px auto;
+}
+
+.about-greetings{
+  padding-top: 10vh;
+}
+
+.about-haruto,
+.about-riko {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 5vw, 40px);
+  width: min(920px, 90vw);
+  margin: clamp(40px, 10vw, 72px) auto 0;
+}
+
+.about-haruto-image,
+.about-riko-image {
+  width: 45%;
+  height: auto;
+  object-fit: cover;
+}
+
+.about-haruto-text,
+.about-riko-text {
+  width: 55%;
+  line-height: 1.9;
+  font-size: clamp(1rem, 3.6vw, 1.2rem);
+}
+
+.about-riko {
+  flex-direction: row-reverse;
+}
+
 body.has-scroll-reveal .about-heading,
-body.has-scroll-reveal .about-text {
+body.has-scroll-reveal .about-text,
+body.has-scroll-reveal .about-our-image {
   opacity: var(--scroll-fade-progress, 0);
   transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 0.67s ease, transform 0.67s ease;
   will-change: opacity, transform;
 }
 
@@ -591,7 +630,8 @@ body.nav-open {
 
 @media (prefers-reduced-motion: reduce) {
   body.has-scroll-reveal .about-heading,
-  body.has-scroll-reveal .about-text {
+  body.has-scroll-reveal .about-text,
+  body.has-scroll-reveal .about-our-image {
     transition: none;
     transform: none;
     opacity: 1;
@@ -649,6 +689,32 @@ body.nav-open {
     max-width: 100%;
     margin-left: auto;
     margin-right: 0;
+  }
+
+  .about-our-image {
+    width: 95vw;
+  }
+
+  .about-haruto,
+  .about-riko {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90vw;
+  }
+
+  .about-haruto-image,
+  .about-riko-image {
+    width: 100%;
+  }
+
+  .about-haruto-text,
+  .about-riko-text {
+    width: 100%;
+  }
+
+  .about-riko {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .logo-fixed {

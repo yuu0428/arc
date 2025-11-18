@@ -597,7 +597,7 @@
   }
 
   function initializeScrollReveal() {
-    const targets = Array.from(document.querySelectorAll('.about-heading, .about-text'));
+    const targets = Array.from(document.querySelectorAll('.about-heading, .about-text, .about-our-image'));
     if (!targets.length) {
       return;
     }
