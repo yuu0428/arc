@@ -269,7 +269,7 @@ body.has-scroll-reveal .about-riko {
   --color-bg: #f8f9fb;
   --header-surface: rgba(248, 249, 251, 0.92);
   --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.08);
-  --menu-diameter: 50vw;
+  --menu-diameter: 46vw;
   --hero-circle-top: 50vh;
   --hero-circle-size: clamp(360px, 80vw, 780px);
   --hero-overlay-size: clamp(200px, 42vw, 340px);
@@ -487,8 +487,8 @@ body.nav-open {
 .circular-nav__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(214, 214, 214, 0.6);
-  backdrop-filter: blur(6px);
+  background: rgba(17, 24, 39, 0.24);
+  backdrop-filter: blur(8px);
   border: none;
   cursor: pointer;
 }
@@ -532,8 +532,8 @@ body.nav-open {
 }
 
 .circular-nav__wheel::before {
-  background: radial-gradient(circle at 30% 30%, #d8d8d8 0%, #383d55 70%, #0F1A3D 100%);
-  box-shadow: -28px 26px 72px rgba(32, 32, 32, 0.55);
+  background: radial-gradient(circle at 30% 30%, #f8f9fb 0%, #1f2937 72%, #0f172a 100%);
+  box-shadow: -12px 12px 48px rgba(17, 24, 39, 0.4);
   mask: conic-gradient(
     from var(--nav-arc-start),
     #000 0deg var(--nav-arc-span),
@@ -557,12 +557,12 @@ body.nav-open {
   color: #ffffff;
   border: none;
   font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(2rem, 6vw, 3.8rem);
-  letter-spacing: clamp(0.06em, 1.6vw, 0.12em);
-  font-weight: 700;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  letter-spacing: clamp(0.02em, 0.6vw, 0.06em);
+  font-weight: 600;
   white-space: nowrap;
-  transform: translate(-50%, -40%) scale(0.96);
-  transition: transform 160ms ease, opacity 160ms ease, color 160ms ease, text-shadow 160ms ease;
+  transform: translate(-50%, -40%) scale(0.92);
+  transition: transform 180ms ease, opacity 180ms ease, color 180ms ease, text-shadow 180ms ease;
   pointer-events: auto;
   user-select: none;
 }
@@ -572,21 +572,22 @@ body.nav-open {
 }
 
 .circular-nav__item.is-active {
-  color: #f7f9ef;
-  text-shadow: 0 12px 32px rgba(37, 99, 235, 0.55);
-  transform: translate(-50%, -40%) scale(1.08);
+  color: #f4f7fb;
+  text-shadow: 0 6px 16px rgba(17, 24, 39, 0.28);
+  transform: translate(-50%, -40%) scale(1.02);
 }
 
 .circular-nav__close {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 42%;
+  width: 32%;
   aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 50%;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.28);
   cursor: pointer;
   pointer-events: auto;
 }
@@ -602,7 +603,7 @@ body.nav-open {
     --hero-circle-size: clamp(300px, 68vw, 520px);
     --hero-overlay-size: clamp(180px, 42vw, 300px);
     --hero-tagline-gap: clamp(70px, 14vh, 190px);
-    --menu-diameter: 60vw;
+    --menu-diameter: 52vw;
     --menu-center-top: clamp(120px, 22vh, 210px);
     --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.18);
     --hero-overlay-translate-y: -28%;
@@ -661,7 +662,7 @@ body.nav-open {
     --hero-circle-size: clamp(260px, 96vw, 360px);
     --hero-overlay-size: clamp(170px, 70vw, 260px);
     --hero-tagline-gap: clamp(-1000px, -6vh, 160px);
-    --menu-diameter: 120vw;
+    --menu-diameter: 90vw;
     --menu-center-top: calc(var(--hero-circle-top) + var(--hero-circle-size) * 0.38);
     --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.12);
     --hero-overlay-translate-y: -25%;
