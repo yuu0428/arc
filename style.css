@@ -221,22 +221,23 @@
   display: flex;
   align-items: center;
   gap: clamp(16px, 5vw, 40px);
-  width: min(920px, 90vw);
+  width: min(920px, 95vw);
   margin: clamp(40px, 10vw, 72px) auto 0;
+  padding: 16px;
 }
 
 .about-haruto-image,
 .about-riko-image {
-  width: 45%;
+  width: 42%;
   height: auto;
   object-fit: cover;
 }
 
 .about-haruto-text,
 .about-riko-text {
-  width: 55%;
-  line-height: 1.9;
-  font-size: clamp(1rem, 3.6vw, 1.2rem);
+  width: 58%;
+  line-height: 1.75;
+  font-size: clamp(1rem, 3.2vw, 1.15rem);
 }
 
 .about-riko {
@@ -697,24 +698,26 @@ body.nav-open {
 
   .about-haruto,
   .about-riko {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 90vw;
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(12px, 4vw, 20px);
+    width: min(920px, 100vw);
   }
 
   .about-haruto-image,
   .about-riko-image {
-    width: 100%;
+    width: 42%;
   }
 
   .about-haruto-text,
   .about-riko-text {
-    width: 100%;
+    width: 58%;
+    font-size: clamp(0.95rem, 4vw, 1.05rem);
+    line-height: 1.65;
   }
 
   .about-riko {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row-reverse;
   }
 
   .logo-fixed {
