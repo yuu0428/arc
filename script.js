@@ -597,7 +597,9 @@
   }
 
   function initializeScrollReveal() {
-    const targets = Array.from(document.querySelectorAll('.about-heading, .about-text, .about-our-image'));
+    const targets = Array.from(
+      document.querySelectorAll('.about-heading, .about-text, .about-our-image, .about-haruto, .about-riko'),
+    );
     if (!targets.length) {
       return;
     }
@@ -611,13 +613,14 @@
       }
 
       const viewportHeight = window.innerHeight || 1;
-      const viewportCenter = viewportHeight / 2;
-      const range = Math.max(1, viewportCenter);
+      // 完全表示になる基準をビューポートのやや下寄りにずらす
+      const targetY = viewportHeight * 0.65;
+      const range = Math.max(1, viewportHeight * 0.35);
 
       targets.forEach((target) => {
         const rect = target.getBoundingClientRect();
         const centerY = rect.top + rect.height / 2;
-        const distanceBelowCenter = Math.max(0, centerY - viewportCenter);
+        const distanceBelowCenter = Math.max(0, centerY - targetY);
         const progress = clamp01(1 - distanceBelowCenter / range);
         target.style.setProperty('--scroll-fade-progress', progress.toFixed(3));
       });

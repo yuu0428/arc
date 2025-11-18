@@ -161,6 +161,10 @@
   width: min(720px, 80vw);
   margin-inline: auto;
   text-align: center;
+  opacity: var(--scroll-fade-progress, 0);
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
+  transition: opacity 0.67s ease, transform 0.67s ease;
+  will-change: opacity, transform;
 }
 
 .about-heading {
@@ -189,7 +193,7 @@
   background-color: #111827;
   border: 1px solid #111827;
   transition: background-color 0.3s ease, color 0.3s ease;
-  width: fit-content;
+  width: 60vw;
 }
 
 .about-button:focus-visible {
@@ -210,6 +214,10 @@
   width: 75vh;
   padding-top: 15vh;
   margin: 40px auto;
+  opacity: var(--scroll-fade-progress, 0);
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
+  transition: opacity 0.67s ease, transform 0.67s ease;
+  will-change: opacity, transform;
 }
 
 .about-greetings{
@@ -224,6 +232,10 @@
   width: min(920px, 95vw);
   margin: clamp(40px, 10vw, 72px) auto 0;
   padding: 16px;
+  opacity: var(--scroll-fade-progress, 0);
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
+  transition: opacity 0.67s ease, transform 0.67s ease;
+  will-change: opacity, transform;
 }
 
 .about-haruto-image,
@@ -246,11 +258,11 @@
 
 body.has-scroll-reveal .about-heading,
 body.has-scroll-reveal .about-text,
-body.has-scroll-reveal .about-our-image {
+body.has-scroll-reveal .about-our-image,
+body.has-scroll-reveal .about-haruto,
+body.has-scroll-reveal .about-riko {
   opacity: var(--scroll-fade-progress, 0);
   transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
-  transition: opacity 0.67s ease, transform 0.67s ease;
-  will-change: opacity, transform;
 }
 
 :root {
@@ -632,10 +644,13 @@ body.nav-open {
 @media (prefers-reduced-motion: reduce) {
   body.has-scroll-reveal .about-heading,
   body.has-scroll-reveal .about-text,
-  body.has-scroll-reveal .about-our-image {
+  body.has-scroll-reveal .about-our-image,
+  body.has-scroll-reveal .about-haruto,
+  body.has-scroll-reveal .about-riko {
     transition: none;
     transform: none;
     opacity: 1;
+    --scroll-fade-progress: 1;
   }
 }
 
@@ -686,7 +701,7 @@ body.nav-open {
   }
 
   .about-button {
-    width: fit-content;
+    width: 60vw;
     max-width: 100%;
     margin-left: auto;
     margin-right: 0;
