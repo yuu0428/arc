@@ -269,7 +269,7 @@ body.has-scroll-reveal .about-riko {
   --color-bg: #f8f9fb;
   --header-surface: rgba(248, 249, 251, 0.92);
   --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.08);
-  --menu-diameter: 46vw;
+  --menu-diameter: 50vw;
   --hero-circle-top: 50vh;
   --hero-circle-size: clamp(360px, 80vw, 780px);
   --hero-overlay-size: clamp(200px, 42vw, 340px);
@@ -533,7 +533,7 @@ body.nav-open {
 
 .circular-nav__wheel::before {
   background: radial-gradient(circle at 30% 30%, #f8f9fb 0%, #1f2937 72%, #0f172a 100%);
-  box-shadow: -12px 12px 48px rgba(17, 24, 39, 0.4);
+  box-shadow: -12px 12px 40px rgba(17, 24, 39, 0.32);
   mask: conic-gradient(
     from var(--nav-arc-start),
     #000 0deg var(--nav-arc-span),
@@ -557,8 +557,8 @@ body.nav-open {
   color: #ffffff;
   border: none;
   font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(1.4rem, 4vw, 2.2rem);
-  letter-spacing: clamp(0.02em, 0.6vw, 0.06em);
+  font-size: clamp(1.3rem, 3.6vw, 2rem);
+  letter-spacing: clamp(0.015em, 0.5vw, 0.05em);
   font-weight: 600;
   white-space: nowrap;
   transform: translate(-50%, -40%) scale(0.92);
@@ -568,13 +568,21 @@ body.nav-open {
 }
 
 .circular-nav__item:focus-visible {
-  outline: none;
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 6px;
+}
+
+.circular-nav__item:hover {
+  color: #ffffff;
+  text-shadow: 0 6px 12px rgba(17, 24, 39, 0.2);
+  transform: translate(-50%, -40%) scale(0.96);
 }
 
 .circular-nav__item.is-active {
-  color: #f4f7fb;
-  text-shadow: 0 6px 16px rgba(17, 24, 39, 0.28);
+  color: #f6f9fd;
+  text-shadow: 0 4px 10px rgba(17, 24, 39, 0.2);
   transform: translate(-50%, -40%) scale(1.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .circular-nav__close {
@@ -586,15 +594,45 @@ body.nav-open {
   transform: translate(-50%, -50%);
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.24);
   cursor: pointer;
   pointer-events: auto;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
 .circular-nav__close:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+}
+
+.circular-nav__guide {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translate(-50%, 6px);
+  max-width: 320px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.82);
+  color: #f4f7fb;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.22);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.circular-nav__guide.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.circular-nav__close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translate(-50%, -50%) scale(1.03);
 }
 
 @media (max-width: 1024px) {
@@ -603,7 +641,7 @@ body.nav-open {
     --hero-circle-size: clamp(300px, 68vw, 520px);
     --hero-overlay-size: clamp(180px, 42vw, 300px);
     --hero-tagline-gap: clamp(70px, 14vh, 190px);
-    --menu-diameter: 52vw;
+    --menu-diameter: 55vw;
     --menu-center-top: clamp(120px, 22vh, 210px);
     --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.18);
     --hero-overlay-translate-y: -28%;
@@ -662,7 +700,7 @@ body.nav-open {
     --hero-circle-size: clamp(260px, 96vw, 360px);
     --hero-overlay-size: clamp(170px, 70vw, 260px);
     --hero-tagline-gap: clamp(-1000px, -6vh, 160px);
-    --menu-diameter: 90vw;
+    --menu-diameter: 110vw;
     --menu-center-top: calc(var(--hero-circle-top) + var(--hero-circle-size) * 0.38);
     --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.12);
     --hero-overlay-translate-y: -25%;

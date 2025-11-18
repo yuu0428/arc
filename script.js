@@ -238,6 +238,14 @@
     const items = Array.from(wheel.querySelectorAll('[data-nav-item]'));
     if (!items.length) return;
 
+    // ガイド要素の生成（初回のみ数秒表示）
+    let guide = overlay.querySelector('.circular-nav__guide');
+    if (!guide) {
+      guide = document.createElement('div');
+      guide.className = 'circular-nav__guide';
+      overlay.appendChild(guide);
+    }
+
     const menuState = { isOpen: false };
     const gapAngle = 24;
     const arcSpan = 360 - gapAngle;
@@ -267,7 +275,7 @@
       navState.baseAngles = [0];
       navState.step = 360;
     } else {
-      navState.step = 360 / items.length;
+      navState.step = -360 / items.length;
       navState.baseAngles = items.map((_, index) => index * navState.step);
       const desiredGapCenter = -90;
       const lastBaseAngle = navState.baseAngles[items.length - 1] ?? 0;
@@ -281,6 +289,7 @@
     }
 
     let lastFocused = null;
+    let guideShown = false;
 
     const closeTargets = overlay.querySelectorAll('[data-nav-close]');
 
@@ -346,6 +355,7 @@
       evaluateMenuToggleContrast();
       focusActiveItem();
       document.addEventListener('keydown', handleKeydown);
+      showGuideOnce();
     }
 
     function closeNav() {
@@ -427,7 +437,7 @@
       navState.rotation += delta;
       navState.lastAngle = angle;
 
-      if (Math.abs(navState.rotation - navState.startRotation) > navState.step * 0.2) {
+      if (Math.abs(navState.rotation - navState.startRotation) > navState.step * 0.08) {
         navState.didDrag = true;
       }
 
@@ -456,7 +466,7 @@
       const delta = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
       if (Number.isNaN(delta)) return;
 
-      navState.rotation += delta * 0.35;
+      navState.rotation += delta * 0.55;
       navState.didDrag = true;
       updateWheel();
       scheduleSnap();
@@ -512,7 +522,7 @@
       }
 
       if (force || !navState.radius) {
-        navState.radius = Math.max(rect.width / 2 - 140, rect.width * 0.42);
+        navState.radius = Math.max(rect.width / 2 - 100, rect.width * 0.46);
       }
 
       const activeIndex = getActiveItemIndex();
@@ -539,16 +549,14 @@
 
       const toPositive = (value) => ((value % 360) + 360) % 360;
       if (items.length >= 2) {
-        const topAngle = toPositive(navState.baseAngles[0] + navState.rotation - navState.targetAngleOffset);
-        const contactAngle = toPositive(navState.baseAngles[items.length - 1] + navState.rotation - navState.targetAngleOffset);
-        const forwardDiff = (topAngle - contactAngle + 360) % 360;
-        const gapCenter = (contactAngle + forwardDiff / 2) % 360;
-        const arcStart = (gapCenter + navState.gapAngle / 2) % 360;
-        const cssArcStart = (arcStart + 90 + navState.targetAngleOffset) % 360;
-        wheel.style.setProperty('--nav-arc-start', `${cssArcStart}deg`);
-      } else {
-        const cssArcStart = (toPositive(navState.rotation - navState.targetAngleOffset) + 90 + navState.targetAngleOffset) % 360;
-        wheel.style.setProperty('--nav-arc-start', `${cssArcStart}deg`);
+        // ギャップをアイテム0→1の中間（実表示角度）に固定
+        // テキスト側は translate(-50%, -40%) rotate(displayAngle) translateX(...) rotate(180deg) scale(...)
+        // なので、displayOffset + targetAngleOffset + 180deg をマスク計算にも反映させる
+        const base0 = navState.baseAngles[0] ?? 0;
+        const displayAngle0 = toPositive(base0 + navState.rotation + navState.displayOffset + navState.targetAngleOffset + 180);
+        const gapCenter = toPositive(displayAngle0 + navState.step / 2);
+        const arcStart = toPositive(gapCenter + navState.gapAngle / 2 + 105);
+        wheel.style.setProperty('--nav-arc-start', `${arcStart}deg`);
       }
 
       wheel.style.setProperty('--nav-arc-span', `${navState.arcSpan}deg`);
@@ -594,6 +602,19 @@
       open: openNav,
       close: closeNav,
     };
+
+    function showGuideOnce() {
+      if (guideShown || !guide) return;
+      const isMobile = window.matchMedia('(max-width: 600px)').matches;
+      guide.textContent = isMobile
+        ? '左右スワイプで選択、タップで決定、外側タップか×で閉じる'
+        : '←/→ で移動、Enterで決定、Escで閉じる';
+      guide.classList.add('is-visible');
+      guideShown = true;
+      window.setTimeout(() => {
+        guide?.classList.remove('is-visible');
+      }, 2800);
+    }
   }
 
   function initializeScrollReveal() {
