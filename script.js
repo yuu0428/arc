@@ -233,6 +233,7 @@
   function initializeCircularNav() {
     const overlay = circularNav;
     const wheel = overlay.querySelector('[data-nav-wheel]');
+    const backdrop = overlay.querySelector('.circular-nav__backdrop');
     if (!wheel) return;
 
     const items = Array.from(wheel.querySelectorAll('[data-nav-item]'));
@@ -290,6 +291,11 @@
 
     let lastFocused = null;
     let guideShown = false;
+    const preventScroll = event => {
+      if (!menuState.isOpen) return;
+      event.preventDefault();
+      event.stopPropagation();
+    };
 
     const closeTargets = overlay.querySelectorAll('[data-nav-close]');
 
@@ -357,6 +363,11 @@
       isMenuOpen = true;
       header.setAttribute('data-hidden', 'false');
       document.body.classList.add('nav-open');
+      document.body.style.setProperty('overflow', 'hidden');
+      overlay.addEventListener('wheel', preventScroll, { passive: false });
+      overlay.addEventListener('touchmove', preventScroll, { passive: false });
+      wheel.addEventListener('touchmove', preventScroll, { passive: false });
+      backdrop?.addEventListener('touchmove', preventScroll, { passive: false });
       menuToggleButton.setAttribute('aria-expanded', 'true');
       menuToggleButton.setAttribute('aria-label', 'メニューを閉じる');
       evaluateMenuToggleContrast();
@@ -374,6 +385,11 @@
       menuToggleButton.setAttribute('aria-expanded', 'false');
       menuToggleButton.setAttribute('aria-label', 'メニューを開く');
       document.body.classList.remove('nav-open');
+      document.body.style.removeProperty('overflow');
+      overlay.removeEventListener('wheel', preventScroll, { passive: false });
+      overlay.removeEventListener('touchmove', preventScroll, { passive: false });
+      wheel.removeEventListener('touchmove', preventScroll, { passive: false });
+      backdrop?.removeEventListener('touchmove', preventScroll, { passive: false });
       document.removeEventListener('keydown', handleKeydown);
       wheel.classList.remove('is-dragging');
       navState.isDragging = false;
