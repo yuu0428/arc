@@ -489,10 +489,9 @@
       const delta = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
       if (Number.isNaN(delta)) return;
 
-      navState.rotation += delta * 0.55;
+      navState.rotation += delta * 0.22;
       navState.didDrag = true;
       updateWheel();
-      scheduleSnap();
     }
 
     function handleResize() {
@@ -516,7 +515,7 @@
       navState.snapTimer = window.setTimeout(() => {
         snapToActive();
         navState.didDrag = false;
-      }, 160);
+      }, 260);
     }
 
     function snapToActive() {
