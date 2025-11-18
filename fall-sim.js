@@ -17,7 +17,7 @@
     const rotationDurationMs = 18000; // spin-circle 18s
     const triggerDelayMs = (triggerAngle / 360) * rotationDurationMs;
     const gravity = 2000; // px/s^2
-    const restitution = 0.25;
+    const restitution = 0.4;
     const stopVelocity = 6;
     const getPersonRect = () => person.getBoundingClientRect();
 
