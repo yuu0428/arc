@@ -158,9 +158,8 @@
 
 .about-heading,
 .about-text {
-  width: min(720px, 80vw);
+  width: min(720px, 60vw);
   margin-inline: auto;
-  text-align: center;
   opacity: var(--scroll-fade-progress, 0);
   transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
   transition: opacity 0.67s ease, transform 0.67s ease;
@@ -170,9 +169,10 @@
 .about-heading {
   margin-top: clamp(48px, 14vw, 80px);
   margin-bottom: 50vh;
-  font-size: clamp(2.2rem, 5.2vw, 3.4rem);
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
   line-height: 1.6;
   font-weight: 700;
+  text-align: left;
 }
 
 #about {
@@ -188,7 +188,10 @@
 }
 
 .about-text {
+  width: min(720px, 85vw);
   line-height: 2;
+  font-size: clamp(0.85rem, 3vw, 0.95rem);
+  text-align: left;
 }
 
 .about-button {
@@ -287,7 +290,11 @@ body.has-scroll-reveal .about-riko {
 
 .note-section {
   padding: clamp(40px, 12vw, 100px) clamp(16px, 6vw, 60px);
-  padding-top: 15vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vh;
 }
 
 .note-card {
@@ -298,6 +305,7 @@ body.has-scroll-reveal .about-riko {
   overflow: hidden;
   background-color: rgba(248, 249, 251, 0.9);
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.15);
+  transform: translateY(-20vh);
 }
 
 .note-image {
@@ -841,15 +849,20 @@ body.nav-open {
     font-size: clamp(1.6rem, 10vw, 3rem);
     line-height: 1.4;
     max-width: 13ch;
-    margin-bottom: 50vh;
+    margin-bottom: 40vh;
     font-weight: bold;
     text-align: left;
   }
 
   .about-text {
-    width: 60vw;
+    width: 65vw;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
+  }
+
+  .about-text span{
+    display: inline-block;
+    width: 80vw ;
   }
 
   .about-button {
@@ -857,6 +870,7 @@ body.nav-open {
     max-width: 100%;
     margin-left: auto;
     margin-right: 0;
+    margin-bottom: 10vh;
   }
 
   .about-our-image {
