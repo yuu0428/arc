@@ -227,6 +227,7 @@
   window.addEventListener('load', runInitialContrastCheck);
   runInitialContrastCheck();
 
+  const anchorRevealController = initializeAnchorRevealOverride();
   initializeCircularNav();
   initializeScrollReveal();
   if (typeof window.initializeFallSim === 'function') {
@@ -346,6 +347,9 @@
         if (targetSelector) {
           const target = document.querySelector(targetSelector);
           if (target) {
+            if (anchorRevealController) {
+              anchorRevealController.handleManualTrigger(targetSelector);
+            }
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }
@@ -651,6 +655,15 @@
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const harutoElement = document.querySelector('.about-haruto');
+    const rikoElement = document.querySelector('.about-riko');
+
+    const computeProgress = (element, viewportHeight, targetY, range) => {
+      const rect = element.getBoundingClientRect();
+      const centerY = rect.top + rect.height / 2;
+      const distanceBelowCenter = Math.max(0, centerY - targetY);
+      return clamp01(1 - distanceBelowCenter / range);
+    };
 
     const updateFade = () => {
       if (prefersReducedMotion.matches || !document.body.classList.contains('has-scroll-reveal')) {
@@ -663,11 +676,18 @@
       const targetY = viewportHeight * 0.65;
       const range = Math.max(1, viewportHeight * 0.35);
 
+      const sharedProgress =
+        harutoElement && harutoElement.isConnected
+          ? computeProgress(harutoElement, viewportHeight, targetY, range)
+          : null;
+
       targets.forEach((target) => {
-        const rect = target.getBoundingClientRect();
-        const centerY = rect.top + rect.height / 2;
-        const distanceBelowCenter = Math.max(0, centerY - targetY);
-        const progress = clamp01(1 - distanceBelowCenter / range);
+        let progress;
+        if (sharedProgress !== null && (target === harutoElement || target === rikoElement)) {
+          progress = sharedProgress;
+        } else {
+          progress = computeProgress(target, viewportHeight, targetY, range);
+        }
         target.style.setProperty('--scroll-fade-progress', progress.toFixed(3));
       });
     };
@@ -691,6 +711,56 @@
       window.requestAnimationFrame(updateFade);
     });
     updateFade();
+  }
+
+  function initializeAnchorRevealOverride() {
+    const greetingsElements = Array.from(document.querySelectorAll('.about-haruto, .about-riko'));
+    const anchorMap = new Map();
+    if (greetingsElements.length) {
+      anchorMap.set('#greatings', { elements: greetingsElements, timer: null });
+    }
+    if (!anchorMap.size) {
+      return null;
+    }
+
+    const ACTIVE_CLASS = 'anchor-jump-visible';
+    const HOLD_DURATION = 1200;
+
+    const applyForSelector = (selector) => {
+      if (typeof selector !== 'string' || !anchorMap.has(selector)) {
+        return;
+      }
+      const entry = anchorMap.get(selector);
+      if (!entry) return;
+      window.clearTimeout(entry.timer);
+      entry.elements.forEach((element) => element.classList.add(ACTIVE_CLASS));
+      entry.timer = window.setTimeout(() => {
+        entry.elements.forEach((element) => element.classList.remove(ACTIVE_CLASS));
+      }, HOLD_DURATION);
+    };
+
+    const handleAnchorClick = (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      if (!target) return;
+      const anchor = target.closest('a[href^="#"]');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      applyForSelector(href);
+    };
+
+    document.addEventListener('click', handleAnchorClick, true);
+    window.addEventListener('hashchange', () => {
+      applyForSelector(window.location.hash);
+    });
+    window.addEventListener('load', () => {
+      applyForSelector(window.location.hash);
+    });
+
+    return {
+      handleManualTrigger: (selector) => {
+        applyForSelector(selector);
+      },
+    };
   }
 
   })();

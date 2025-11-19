@@ -179,6 +179,14 @@
   scroll-margin-top: 7rem;
 }
 
+#greatings {
+  scroll-margin-top: -11vh;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
 .about-text {
   line-height: 2;
 }
@@ -187,7 +195,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: calc(clamp(24px, 8vw, 40px) + 5vh) 0 0 auto;
+  margin: calc(clamp(24px, 8vw, 40px) ) 0 0 auto;
   padding: 0.85rem 4rem;
   font-size: 0.95rem;
   letter-spacing: 0.08em;
@@ -225,7 +233,8 @@
 }
 
 .about-greetings{
-  padding-top: 10vh;
+  padding-top: 0vh;
+  scroll-margin-top: 0px;
 }
 
 .about-haruto,
@@ -258,6 +267,13 @@
 
 .about-riko {
   flex-direction: row-reverse;
+  position: relative;
+}
+
+.anchor-jump-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 body.has-scroll-reveal .about-heading,
@@ -266,7 +282,100 @@ body.has-scroll-reveal .about-our-image,
 body.has-scroll-reveal .about-haruto,
 body.has-scroll-reveal .about-riko {
   opacity: var(--scroll-fade-progress, 0);
-  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 30px));
+}
+
+.note-section {
+  padding: clamp(40px, 12vw, 100px) clamp(16px, 6vw, 60px);
+  padding-top: 15vh;
+}
+
+.note-card {
+  position: relative;
+  max-width: min(1040px, 95vw);
+  margin: 0 auto;
+  border-radius: clamp(18px, 4vw, 32px);
+  overflow: hidden;
+  background-color: rgba(248, 249, 251, 0.9);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.15);
+}
+
+.note-image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  min-height: clamp(240px, 60vw, 420px);
+}
+
+.note-panel {
+  position: static;
+  margin: clamp(16px, 5vw, 32px);
+  padding: clamp(18px, 6vw, 32px);
+  border-radius: clamp(18px, 4vw, 32px);
+  background: #ffffff;
+  color: #111827;
+  clip-path: polygon(12% 0, 100% 12%, 90% 100%, 0 90%, 0 18%);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.note-panel-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.note-panel-lead {
+  font-size: clamp(1rem, 4vw, 1.1rem);
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.note-panel-strong {
+  font-size: clamp(1.4rem, 6vw, 2rem);
+}
+
+.note-panel-button {
+  align-self: flex-end;
+  margin-top: 16px;
+  margin-right: 4vw;
+  padding: clamp(0.45rem, 1.8vw, 0.85rem) clamp(1.1rem, 5vw, 2.4rem);
+  border-radius: 999px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #111827;
+  border: 1px solid #111827;
+  font-size: clamp(0.7rem, 2.6vw, 0.95rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.note-panel-button:hover {
+  background-color: rgba(17, 24, 39, 0.85);
+}
+
+.note-panel-button:active {
+  transform: translateY(2px);
+}
+
+@media (min-width: 640px) {
+  .note-panel {
+    position: absolute;
+    margin: 0;
+    width: min(320px, 55%);
+    right: clamp(20px, 5vw, 40px);
+    bottom: clamp(20px, 6vw, 50px);
+  }
 }
 
 :root {
