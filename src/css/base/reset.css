@@ -27,6 +27,7 @@ body {
   position: relative;
   min-height: 1000svh;
   overflow-x: hidden;
+  font-feature-settings: "palt";
 }
 
 body.nav-open {

@@ -18,7 +18,7 @@
   --color-note-bg: #f6f9fd;
   
   /* Font Families */
-  --font-family-base: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+  --font-family-base: "Manrope", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
   --font-family-fallback: "Helvetica Neue", Arial, sans-serif;
   
   /* Font Sizes (rem based, 16px = 1rem) */
