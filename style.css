@@ -646,6 +646,7 @@ body.nav-open {
 
 .circular-nav__wheel.is-dragging {
   cursor: grabbing;
+  transition: none;
 }
 
 .circular-nav__wheel::before {

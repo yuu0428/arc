@@ -568,7 +568,7 @@
 
         const itemDistance = Math.max(navState.radius * 0.75, navState.radius - 60);
         const displayAngle = angle + navState.displayOffset;
-        const transform = `translate(-50%, -40%) rotate(${displayAngle.toFixed(3)}deg) translateX(${itemDistance.toFixed(3)}px) rotate(180deg) scale(${scale.toFixed(3)})`;
+        const transform = `translate(-50%, -40%) rotate(${displayAngle.toFixed(3)}deg) translateX(${itemDistance.toFixed(3)}px) rotate(${(180 - navState.displayOffset).toFixed(3)}deg) scale(${scale.toFixed(3)})`;
         item.style.transform = transform;
         item.style.opacity = opacity;
         item.style.zIndex = String(100 + Math.round(proximity * 100));
