@@ -1,0 +1,115 @@
+.note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  background: var(--color-note-bg);
+}
+
+.note__card {
+  position: relative;
+  width: min(1080px, 90vw);
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+
+.note__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.note__panel {
+  position: absolute;
+  inset: 0;
+  padding: clamp(var(--spacing-xl), 6vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.76) 0%, rgba(15, 23, 42, 0.58) 100%);
+  z-index: 2;
+}
+
+.note__panel-text {
+  margin-bottom: clamp(var(--spacing-xl), 5vw, 3rem);
+  color: var(--color-text-white);
+}
+
+.note__panel-lead {
+  display: block;
+  font-size: clamp(var(--font-size-lg), 4vw, var(--font-size-xl));
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+
+.note__panel-strong {
+  display: block;
+  font-size: clamp(var(--font-size-xl), 6vw, var(--font-size-3xl));
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.note__panel-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 0.95rem 2.4rem;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  background: var(--color-text-white);
+  border: none;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.note__panel-button:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.note__panel-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 600px) {
+  .note {
+    padding: var(--spacing-xl) var(--spacing-sm);
+  }
+
+  .note__card {
+    width: min(1080px, 96vw);
+    aspect-ratio: 4 / 5;
+  }
+
+  .note__panel {
+    padding: clamp(var(--spacing-lg), 5vw, var(--spacing-xl));
+  }
+
+  .note__panel-lead {
+    font-size: clamp(1.1rem, 5vw, var(--font-size-lg));
+  }
+
+  .note__panel-strong {
+    font-size: clamp(1.6rem, 8vw, var(--font-size-xl));
+  }
+
+  .note__panel-button {
+    padding: 0.85rem var(--spacing-xl);
+    font-size: var(--font-size-sm);
+  }
+}

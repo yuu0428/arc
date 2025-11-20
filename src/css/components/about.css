@@ -1,0 +1,198 @@
+.about__heading,
+.about__text {
+  width: min(720px, 60vw);
+  margin-inline: auto;
+  opacity: var(--scroll-fade-progress, 0);
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
+  transition: opacity 0.67s ease, transform 0.67s ease;
+  will-change: opacity, transform;
+}
+
+.about__heading {
+  margin-top: clamp(48px, 14vw, 80px);
+  margin-bottom: 50vh;
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  line-height: 1.6;
+  font-weight: 700;
+  text-align: left;
+}
+
+#about {
+  scroll-margin-top: 7rem;
+}
+
+#greetings {
+  scroll-margin-top: -11vh;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.about__text {
+  width: min(720px, 85vw);
+  line-height: 2;
+  font-size: clamp(0.85rem, 3vw, 0.95rem);
+  text-align: left;
+}
+
+.about__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: calc(clamp(24px, 8vw, 40px)) 0 0 auto;
+  padding: 0.85rem 4rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-white);
+  background-color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  width: 60vw;
+}
+
+.about__button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 4px;
+}
+
+.about__button:hover {
+  background-color: rgba(17, 24, 39, 0.85);
+}
+
+.about__button:active {
+  background-color: rgba(17, 24, 39, 0.72);
+}
+
+.about__image {
+  display: block;
+  width: 75vh;
+  padding-top: 15vh;
+  margin: 40px auto;
+  opacity: var(--scroll-fade-progress, 0);
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
+  transition: opacity 0.67s ease, transform 0.67s ease;
+  will-change: opacity, transform;
+}
+
+.about__greetings {
+  padding-top: 0vh;
+  scroll-margin-top: 0px;
+}
+
+.person-card {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 5vw, 40px);
+  width: min(920px, 95vw);
+  margin: clamp(40px, 10vw, 72px) auto 0;
+  padding: var(--spacing-md);
+  opacity: var(--scroll-fade-progress, 0);
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
+  transition: opacity 0.67s ease, transform 0.67s ease;
+  will-change: opacity, transform;
+}
+
+.person-card__image {
+  width: 42%;
+  height: auto;
+  object-fit: cover;
+}
+
+.person-card__text {
+  width: 58%;
+  line-height: 1.75;
+  font-size: clamp(1rem, 3.2vw, 1.15rem);
+}
+
+.person-card--riko {
+  flex-direction: row-reverse;
+  position: relative;
+}
+
+.anchor-jump-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+body.has-scroll-reveal .about__heading,
+body.has-scroll-reveal .about__text,
+body.has-scroll-reveal .about__image,
+body.has-scroll-reveal .person-card {
+  opacity: var(--scroll-fade-progress, 0);
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 30px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.has-scroll-reveal .about__heading,
+  body.has-scroll-reveal .about__text,
+  body.has-scroll-reveal .about__image,
+  body.has-scroll-reveal .person-card {
+    transition: none;
+    transform: none;
+    opacity: 1;
+    --scroll-fade-progress: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    display: block;
+  }
+
+  .about__heading {
+    font-size: clamp(1.6rem, 10vw, 3rem);
+    line-height: 1.4;
+    max-width: 13ch;
+    margin-bottom: 40vh;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .about__text {
+    width: 70vw;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .about__text span {
+    display: inline-block;
+    width: 80vw;
+  }
+
+  .about__button {
+    width: 60vw;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 10vh;
+  }
+
+  .about__image {
+    width: 95vw;
+  }
+
+  .person-card {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(12px, 4vw, 20px);
+    width: min(920px, 100vw);
+  }
+
+  .person-card__image {
+    width: 42%;
+  }
+
+  .person-card__text {
+    width: 58%;
+    font-size: clamp(0.95rem, 4vw, 1.05rem);
+    line-height: 1.65;
+  }
+
+  .person-card--riko {
+    flex-direction: row-reverse;
+  }
+}

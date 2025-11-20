@@ -1,0 +1,105 @@
+:root {
+  /* Typography Colors */
+  --color-text-primary: #111827;
+  --color-text-white: #ffffff;
+  --color-text-light: #f4f7fb;
+  
+  /* Background Colors */
+  --color-bg: #f8f9fb;
+  --color-bg-dark: #000000;
+  --color-bg-hero: #f8f9fb;
+  
+  /* Border Colors */
+  --color-border-light: rgba(255, 255, 255, 0.35);
+  --color-border-dark: rgba(17, 24, 39, 0.22);
+  
+  /* Component Colors */
+  --color-about-heading: #1f2937;
+  --color-note-bg: #f6f9fd;
+  
+  /* Font Families */
+  --font-family-base: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+  --font-family-fallback: "Helvetica Neue", Arial, sans-serif;
+  
+  /* Font Sizes (rem based, 16px = 1rem) */
+  --font-size-xs: 0.85rem;
+  --font-size-sm: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-2xl: 3rem;
+  --font-size-3xl: 4rem;
+  
+  /* Spacing (rem based) */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.125rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.875rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 999px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.35s ease;
+  
+  /* Legacy/Component-specific variables */
+  --header-surface: rgba(248, 249, 251, 0.92);
+  --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.08);
+  --menu-diameter: 50vw;
+  --hero-circle-top: 50vh;
+  --hero-circle-size: clamp(360px, 80vw, 780px);
+  --hero-overlay-size: clamp(200px, 42vw, 340px);
+  --menu-center-top: clamp(90px, 16vh, 160px);
+  --hero-tagline-gap: clamp(80px, 14vh, 220px);
+  --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.22);
+  --hero-overlay-translate-y: -30%;
+  --hero-slide-distance: clamp(160px, 36vh, 480px);
+  --menu-toggle-bg-default: rgba(0, 0, 0, 0.45);
+  --menu-toggle-bg-hover-default: rgba(0, 0, 0, 0.7);
+  --menu-toggle-border-default: rgba(255, 255, 255, 0.35);
+  --menu-toggle-icon-default: #111827;
+  --menu-toggle-shadow-default: 0 8px 16px rgba(0, 0, 0, 0.35);
+  --menu-toggle-shadow-hover-default: 0 8px 16px rgba(0, 0, 0, 0.35);
+  --menu-toggle-bg-inverted: rgb(223, 223, 223);
+  --menu-toggle-bg-hover-inverted: rgb(248, 248, 248);
+  --menu-toggle-border-inverted: rgba(17, 24, 39, 0.22);
+  --menu-toggle-icon-inverted: #111827;
+  --menu-toggle-shadow-inverted: 0 10px 24px rgba(15, 23, 42, 0.22);
+  --menu-toggle-shadow-hover-inverted: 0 12px 28px rgba(15, 23, 42, 0.26);
+  
+  --hero-walking-person-size: clamp(10px, 5vh, 100px);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --hero-circle-top: clamp(68px, 14vh, 150px);
+    --hero-circle-size: clamp(300px, 68vw, 520px);
+    --hero-overlay-size: clamp(180px, 42vw, 300px);
+    --hero-tagline-gap: clamp(70px, 14vh, 190px);
+    --menu-diameter: 55vw;
+    --menu-center-top: clamp(120px, 22vh, 210px);
+    --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.18);
+    --hero-overlay-translate-y: -28%;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --hero-walking-person-size: clamp(10px, 5vh, 100px);
+    --hero-circle-top: clamp(52px, 15vh, 150px);
+    --hero-circle-size: clamp(260px, 96vw, 360px);
+    --hero-overlay-size: clamp(170px, 70vw, 260px);
+    --hero-tagline-gap: clamp(-1000px, -6vh, 160px);
+    --menu-diameter: 110vw;
+    --menu-center-top: calc(var(--hero-circle-top) + var(--hero-circle-size) * 0.38);
+    --hero-overlay-offset-y: calc(var(--hero-circle-size) * 0.12);
+    --hero-overlay-translate-y: -25%;
+  }
+}

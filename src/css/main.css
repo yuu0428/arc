@@ -1,0 +1,11 @@
+@import './base/variables.css';
+@import './base/reset.css';
+@import './components/header.css';
+@import './components/hero.css';
+@import './components/circular-nav.css';
+@import './components/about.css';
+@import './components/note.css';
+
+.hero-inline-text {
+  font-size: 100px;
+}

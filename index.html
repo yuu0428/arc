@@ -4,116 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arc Yamanashi --Prototype</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main id="top"></main>
-
-  <a class="logo-fixed" href="#top">
-    <img src="images/logo1.jpg" data-src-default="images/logo1.jpg" data-src-light="images/logo1.jpg" data-src-dark="images/logo11.jpg" alt="logo" />
+  <a class="logo js-logo" href="#top" data-theme="light">
+    <img class="logo__img js-logo-img" src="images/logo1.jpg" data-src-default="images/logo1.jpg" data-src-light="images/logo1.jpg" data-src-dark="images/logo11.jpg" alt="logo" />
   </a>
 
-  <header class="site-header" data-hidden="false">
-    <div class="header-inner">
-      <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="circular-nav" aria-expanded="false">
-        <span></span>
+  <header class="header js-header" data-hidden="false">
+    <div class="header__inner">
+      <button class="menu-toggle js-menu-toggle" type="button" aria-label="メニューを開く" aria-controls="nav-circular" aria-expanded="false">
+        <span class="menu-toggle__line"></span>
       </button>
     </div>
   </header>
 
-  <section class="hero-scroll">
-    <div class="hero-viewport">
-      <div class="hero-backdrop" aria-hidden="true"></div>
-      <img class="walking-person" src="images/walking_person.jpg" alt="walkingperson" />
-      <img class="logo-placement" src="images/circul.jpg" alt="circul" />
-      <img class="logo-overlay" src="images/logo11.jpg" alt="logo11" />
-      <div class="hero-tagline">
-        <span>放課後、</span>
-        <span class="hero-tagline__line">
-          地域で奮闘中
-          <span class="hero-tagline__ellipsis" aria-hidden="true"></span>
-          <span class="visually-hidden">...</span>
-        </span>
-      </div>
-    </div>
-  </section>
+  <main>
+    <div id="top"></div>
 
-  <section class="about">
-    <div class="about-heading">
-      小さな一歩の<br>
-      積み重ねが、<br>
-      やがて大きな<br>
-      輪となるように
-    </div>
-    <div id="about"></div>
-    <div class="about-text">
-      「Arc」という名前には、私たちは<br>
-      一人ひとりが小さな“孤”だけれど、<br>
-      仲間とつながることで大きな<br>
-      “縁（えん）”になれるという<br>
-      想いを込めています。<br>
-      また、物語の主人公の成長を描く<br>
-      “ストーリーアーク”<br>
-      のように、メンバーそれぞれが<br>
-      主役として成長し、<br>
-      地域の方々との関わりの中で<br>
-      私たち自身も変化していきたい。<br>
-      <span>――そんな願いをこの名前に託しました。</span>
-    </div>
-    <a class="about-button" href="about-our.html">view more</a>
-    <div id="greatings"></div>
-    <img class="about-our-image" src="images/IMG_1.jpg">
-    <div class="about-greetings">
-      <div class="about-haruto">
-        <img class="about-haruto-image" src="images/IMG_2.jpg" alt="haruto" />
-        <div class="about-haruto-text">
-          運が導いた出会いが<br>
-          志に変わった。<br>
-          志から<br>
-          託したい希望に広がった。
+    <section class="hero js-hero-scroll">
+      <div class="hero__viewport js-hero-viewport">
+        <div class="hero__backdrop js-hero-backdrop" aria-hidden="true"></div>
+        <img class="hero__walking-person js-walking-person" src="images/walking_person.jpg" alt="walkingperson" />
+        <img class="hero__circle js-circle" src="images/circul.jpg" alt="circul" />
+        <img class="hero__logo-overlay js-floor" src="images/logo11.jpg" alt="logo11" />
+        <div class="hero__tagline">
+          <span>放課後、</span>
+          <span class="hero__tagline-line">
+            地域で奮闘中
+            <span class="hero__tagline-ellipsis" aria-hidden="true"></span>
+            <span class="visually-hidden">...</span>
+          </span>
         </div>
       </div>
-      <div class="about-riko">
-        <img class="about-riko-image" src="images/IMG_3.jpg" alt=" riko" />
-        <div class="about-riko-text">
-          地域に<br>
-          "笑顔"と"縁"<br>
-          を生む架け橋になりたい<br>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about__heading js-about-heading">
+        小さな一歩の<br>
+        積み重ねが、<br>
+        やがて大きな<br>
+        輪となるように
+      </div>
+      <div class="about__text js-about-text">
+        「Arc」という名前には、私たちは<br>
+        一人ひとりが小さな"孤"だけれど、<br>
+        仲間とつながることで大きな<br>
+        "縁（えん）"になれるという<br>
+        想いを込めています。<br>
+        また、物語の主人公の成長を描く<br>
+        "ストーリーアーク"<br>
+        のように、メンバーそれぞれが<br>
+        主役として成長し、<br>
+        地域の方々との関わりの中で<br>
+        私たち自身も変化していきたい。<br>
+        <span>――そんな願いをこの名前に託しました。</span>
+      </div>
+      <a class="about__button" href="about-our.html">view more</a>
+      <div id="greetings"></div>
+      <img class="about__image js-about-image" src="images/IMG_1.jpg" alt="Arc活動イメージ">
+      <div class="about__greetings">
+        <div class="person-card person-card--haruto js-person-card" data-person="haruto">
+          <img class="person-card__image" src="images/IMG_2.jpg" alt="haruto" />
+          <div class="person-card__text">
+            運が導いた出会いが<br>
+            志に変わった。<br>
+            志から<br>
+            託したい希望に広がった。
+          </div>
+        </div>
+        <div class="person-card person-card--riko js-person-card" data-person="riko">
+          <img class="person-card__image" src="images/IMG_3.jpg" alt="riko" />
+          <div class="person-card__text">
+            地域に<br>
+            "笑顔"と"縁"<br>
+            を生む架け橋になりたい<br>
+          </div>
+        </div>
+        <a class="about__button" href="greetings.html">代表挨拶</a>
+      </div>
+    </section>
+
+    <section id="note" class="note">
+      <div class="note__card">
+        <img class="note__image" src="images/IMG_4.jpg" alt="活動の様子" />
+        <div class="note__panel">
+          <div class="note__panel-text">
+            <span class="note__panel-lead">私たちは</span>
+            <span class="note__panel-strong">活動しています</span>
+          </div>
+          <a class="note__panel-button" href="https://note.com/yamanashi_hs" target="_blank" rel="noopener">Noteを見る→</a>
         </div>
       </div>
-      <a class="about-button" href="greatings.html">代表挨拶</a>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section id="note" class="note-section">
-    <div class="note-card">
-      <img class="note-image" src="images/IMG_4.jpg" alt="活動の様子" />
-      <div class="note-panel">
-        <div class="note-panel-text">
-          <span class="note-panel-lead">私たちは</span>
-          <span class="note-panel-strong">活動しています</span>
-        </div>
-        <a class="note-panel-button" href="https://note.com/yamanashi_hs" target="_blank" rel="noopener">Noteを見る→</a>
+  <nav class="nav-circular js-nav-circular" id="nav-circular" data-circular-nav role="dialog" aria-modal="true" aria-hidden="true" hidden>
+    <button class="nav-circular__backdrop js-nav-backdrop" type="button" aria-label="メニューを閉じる" data-nav-close></button>
+    <div class="nav-circular__wheel-wrapper">
+      <div class="nav-circular__wheel" data-nav-wheel>
+        <button type="button" class="nav-circular__item" data-nav-item data-target="#top">トップ</button>
+        <button type="button" class="nav-circular__item" data-nav-item data-target="#about">Arcとは</button>
+        <button type="button" class="nav-circular__item" data-nav-item data-target="#greetings">代表挨拶</button>
+        <button type="button" class="nav-circular__item" data-nav-item data-target="#note">Note</button>
+        <button type="button" class="nav-circular__item" data-nav-item>NMO</button>
+        <button type="button" class="nav-circular__item" data-nav-item>PQR</button>
       </div>
+      <button type="button" class="nav-circular__close" aria-label="メニューを閉じる" data-nav-close></button>
     </div>
-  </section>
+  </nav>
 
-  <div class="circular-nav" id="circular-nav" data-circular-nav role="dialog" aria-modal="true" aria-hidden="true" hidden>
-    <button class="circular-nav__backdrop" type="button" aria-label="メニューを閉じる" data-nav-close></button>
-    <div class="circular-nav__wheel-wrapper">
-      <div class="circular-nav__wheel" data-nav-wheel>
-        <button type="button" class="circular-nav__item" data-nav-item data-target="#top">トップ</button>
-        <button type="button" class="circular-nav__item" data-nav-item data-target="#about">Arcとは</button>
-        <button type="button" class="circular-nav__item" data-nav-item data-target="#greatings">代表挨拶</button>
-        <button type="button" class="circular-nav__item" data-nav-item data-target="#note">Note</button>
-        <button type="button" class="circular-nav__item" data-nav-item>NMO</button>
-        <button type="button" class="circular-nav__item" data-nav-item>PQR</button>
-      </div>
-      <button type="button" class="circular-nav__close" aria-label="メニューを閉じる" data-nav-close></button>
-    </div>
-  </div>
-
-  <script src="fall-sim.js" defer></script>
-  <script src="script.js" defer></script>
+  <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
