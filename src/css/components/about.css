@@ -66,9 +66,11 @@
   color: var(--color-text-white);
   background-color: var(--color-text-primary);
   border: 1px solid var(--color-text-primary);
-  transition: background-color var(--transition-normal), color var(--transition-normal);
+  transition: background-color var(--transition-normal), color var(--transition-normal), transform var(--transition-spring), box-shadow var(--transition-normal);
   width: auto;
   max-width: 60vw;
+  box-shadow: var(--shadow-md);
+  transform: translateY(0);
 }
 
 .about__button:focus-visible {
@@ -77,11 +79,15 @@
 }
 
 .about__button:hover {
-  background-color: rgba(17, 24, 39, 0.85);
+  background-color: rgba(17, 24, 39, 0.9);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .about__button:active {
   background-color: rgba(17, 24, 39, 0.72);
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
 }
 
 .about__image {
@@ -91,8 +97,8 @@
   padding-top: 0;
   margin: 0 auto clamp(1.5rem, 3vh, 2.5rem);
   opacity: var(--scroll-fade-progress, 0);
-  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
-  transition: opacity 0.67s ease, transform 0.67s ease;
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px)) scale(calc(0.95 + (var(--scroll-fade-progress, 0) * 0.05)));
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
