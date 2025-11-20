@@ -297,6 +297,10 @@ body.has-scroll-reveal .about-riko {
   margin-top: 20vh;
 }
 
+#note {
+  scroll-margin-top: 15vh;
+}
+
 .note-card {
   position: relative;
   max-width: min(1040px, 95vw);
