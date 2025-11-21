@@ -206,25 +206,29 @@ body.has-scroll-reveal .person-card {
     width: auto;
     max-width: 80vw;
     padding: 0.75rem 3rem;
-    margin-top: clamp(2rem, 4vh, 3rem);
+    margin-top: 4vh;
     margin-bottom: 2rem;
   }
 
   .about__image {
     width: 80vw;
     object-fit: cover;
-    margin-bottom: clamp(2.5rem, 5vh, 3.5rem);
+    margin-bottom: clamp(2.5rem, 4vh, 3.5rem);
   }
 
   .about__greetings {
-    gap: clamp(1.5rem, 3vh, 2rem);
+    gap: clamp(0.5rem, 2vh, 1rem);
+  }
+
+  .about__button--greeting {
+    margin-top: 1vh;
   }
 
   .person-card {
     flex-direction: row;
     align-items: center;
     min-width: 95vw;
-    gap: clamp(12px, 2vw, 20px);
+    gap: clamp(12px, 2.5vw, 20px);
   }
 
   .person-card__image {
