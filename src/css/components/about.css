@@ -175,7 +175,8 @@ body.has-scroll-reveal .person-card {
 
 @media (max-width: 600px) {
   .about__section {
-    padding: clamp(4rem, 10vh, 6rem) var(--spacing-md) var(--spacing-xl);
+    min-height: 90vh;
+    padding: 10vh var(--spacing-md) 2rem;
   }
 
   .about__section--intro {
@@ -205,17 +206,18 @@ body.has-scroll-reveal .person-card {
     width: auto;
     max-width: 80vw;
     padding: 0.75rem 3rem;
-    margin-top: 1rem;
+    margin-top: clamp(2rem, 4vh, 3rem);
+    margin-bottom: 2rem;
   }
 
   .about__image {
     width: 80vw;
     object-fit: cover;
+    margin-bottom: clamp(2.5rem, 5vh, 3.5rem);
   }
 
   .about__greetings {
-    padding-top: clamp(0.5rem, 2rem, 1rem);
-    gap: clamp(1rem, 1vh, 2.5rem);
+    gap: clamp(1.5rem, 3vh, 2rem);
   }
 
   .person-card {
