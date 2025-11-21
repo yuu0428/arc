@@ -209,7 +209,8 @@ body.has-scroll-reveal .person-card {
   }
 
   .about__image {
-    width: 95vw;
+    width: 80vw;
+    object-fit: cover;
   }
 
   .about__greetings {
