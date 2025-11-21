@@ -18,8 +18,12 @@
   --color-note-bg: #f6f9fd;
   
   /* Font Families */
-  --font-family-base: "Manrope", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+  --font-family-base: "Manrope", "Yu Gothic Medium", "Yu Gothic", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
   --font-family-fallback: "Helvetica Neue", Arial, sans-serif;
+  
+  /* Global Typography Settings */
+  font-feature-settings: "palt";
+  letter-spacing: 0.05em;
   
   /* Font Sizes (rem based, 16px = 1rem) */
   --font-size-xs: 0.85rem;
