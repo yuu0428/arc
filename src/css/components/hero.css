@@ -101,10 +101,12 @@
 .hero__tagline > span {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .hero__tagline > span:first-child {
   margin-bottom: 0.12em;
+  margin-left: -1em;
 }
 
 .hero__tagline-line {

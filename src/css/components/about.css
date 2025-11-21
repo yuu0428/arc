@@ -183,14 +183,15 @@ body.has-scroll-reveal .person-card {
   }
 
   .about__heading {
-    font-size: clamp(1.6rem, 10vw, 3rem);
+    font-size: clamp(1.6rem, 10vw, 2rem);
+    font-weight: 600;
     line-height: 1.4;
     max-width: 13ch;
     text-align: left;
   }
 
   .about__text {
-    width: 70vw;
+    width: 60vw;
     margin: 0 auto;
     text-align: left;
   }
@@ -204,6 +205,7 @@ body.has-scroll-reveal .person-card {
     width: auto;
     max-width: 80vw;
     padding: 0.75rem 3rem;
+    margin-top: 1rem;
   }
 
   .about__image {
