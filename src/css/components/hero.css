@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   min-height: calc(100vh + 120vh);
-  padding-top: 100vh;
+  padding-top: 60vh;
   background: var(--color-bg-hero);
   --hero-progress: 0;
 }
