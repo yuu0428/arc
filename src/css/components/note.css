@@ -98,6 +98,7 @@
 
   .note__panel {
     padding: clamp(var(--spacing-lg), 5vw, var(--spacing-xl));
+    padding-top: clamp(var(--spacing-lg), 16vh, var(--spacing-max));
   }
 
   .note__panel-lead {

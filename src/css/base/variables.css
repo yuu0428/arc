@@ -41,6 +41,10 @@
   --spacing-lg: 1.125rem;
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
+  --spacing-5xl: 8rem;
+  --spacing-max: 100vh;
   
   /* Border Radius */
   --radius-sm: 0.875rem;
