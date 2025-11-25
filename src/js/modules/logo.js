@@ -1,9 +1,15 @@
 import { sampleColorAtPoint } from './utils.js';
+import logoDefault from '../../../images/logo1.jpg';
+import logoDark from '../../../images/logo11.jpg';
 
 export function initializeLogo(logo, logoImg, heroBackdrop) {
   if (!logo || !logoImg) return () => {};
 
   let currentLogoMode = 'default';
+
+  logoImg.dataset.srcDefault = logoDefault;
+  logoImg.dataset.srcLight = logoDefault;
+  logoImg.dataset.srcDark = logoDark;
 
   const resolveLogoAsset = (mode) => {
     const dataset = logoImg.dataset;
