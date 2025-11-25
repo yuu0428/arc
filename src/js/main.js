@@ -5,6 +5,7 @@ import { initializeCircularNav } from './modules/navigation.js';
 import { initializeScrollReveal } from './modules/scroll-reveal.js';
 import { initializeAnchorRevealOverride } from './modules/anchor.js';
 import { initializeFallSim } from './modules/fall-sim.js';
+import { initializeImageScroll } from './modules/image-scroll.js';
 
 (() => {
   const header = document.querySelector('.js-header');
@@ -26,7 +27,6 @@ import { initializeFallSim } from './modules/fall-sim.js';
 
   menuToggleButton.setAttribute('aria-expanded', 'false');
 
-  // Initialize Modules
   const updateHeroProgress = initializeHero(heroScrollSection, heroViewport);
   const evaluateLogoContrast = initializeLogo(logo, logoImg, heroBackdrop);
   const anchorRevealController = initializeAnchorRevealOverride();
@@ -34,11 +34,8 @@ import { initializeFallSim } from './modules/fall-sim.js';
   initializeScrollReveal();
   initializeFallSim();
 
-  // Scroll Handling
   let lastScrollY = window.pageYOffset;
   let ticking = false;
-  // Note: isMenuOpen is tracked inside navigation.js but we need to know it here for header hiding
-  // For now, we'll check the body class or attribute
   const isMenuOpen = () => document.body.classList.contains('nav-open');
 
   const handleScroll = () => {
@@ -84,6 +81,7 @@ import { initializeFallSim } from './modules/fall-sim.js';
     if (updateHeroProgress) updateHeroProgress();
     if (evaluateLogoContrast) evaluateLogoContrast();
     if (evaluateMenuToggleContrast) evaluateMenuToggleContrast();
+    initializeImageScroll();
   };
 
   document.addEventListener('DOMContentLoaded', runInitialContrastCheck);

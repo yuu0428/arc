@@ -38,7 +38,7 @@
 }
 
 #greetings {
-  scroll-margin-top: -11vh;
+  scroll-margin-top: 11vh;
   height: 0;
   margin: 0;
   padding: 0;
@@ -236,8 +236,9 @@ body.has-scroll-reveal .person-card {
   }
 
   .person-card__text {
-    width: 47%;
-    font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+    width: 50%;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    white-space: nowrap;
     line-height: 1.65;
     height: inherit;
     display: flex;

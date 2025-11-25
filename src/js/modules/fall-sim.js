@@ -73,7 +73,6 @@ export function initializeFallSim() {
       const floor = getFloorY();
       const personBottom = personRect.bottom + state.y;
       if (personBottom >= floor) {
-        // 補正して床位置に固定
         state.y = floor - personRect.bottom;
         state.v = -state.v * restitution;
         if (Math.abs(state.v) < stopVelocity) {

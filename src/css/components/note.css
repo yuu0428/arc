@@ -1,19 +1,23 @@
 .note {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: var(--spacing-2xl) var(--spacing-md);
+  padding: 15vh;
+  margin-top: 5vh;
   background: var(--color-note-bg);
 }
 
 .note__card {
   position: relative;
-  width: min(1080px, 90vw);
+  width: min(1080px, 70vw);
   aspect-ratio: 16 / 10;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+  opacity: var(--scroll-fade-progress, 0);
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 40px));
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .note__image {
@@ -22,37 +26,54 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: var(--radius-lg);
   z-index: 1;
 }
 
 .note__panel {
   position: absolute;
-  inset: 0;
-  padding: clamp(var(--spacing-xl), 6vw, 4rem);
+  bottom: -15%;
+  right: -5%;
+  width: 45%;
+  height: 55%;
+  padding: clamp(var(--spacing-md), 4vw, 3rem);
+  padding-right: 12%;
+  padding-bottom: 15%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  background: linear-gradient(135deg, rgba(17, 24, 39, 0.76) 0%, rgba(15, 23, 42, 0.58) 100%);
+  align-items: center;
+  background: #000000;
   z-index: 2;
+  transform: rotate(-15deg);
+  transform-origin: bottom right;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+
+.note__panel-text,
+.note__panel-button {
+  transform: rotate(15deg);
 }
 
 .note__panel-text {
-  margin-bottom: clamp(var(--spacing-xl), 5vw, 3rem);
+  margin-bottom: clamp(var(--spacing-sm), 2vw, 1.5rem);
   color: var(--color-text-white);
+  text-align: center;
+  margin-left: 1.5rem;
+  white-space: nowrap;
 }
 
 .note__panel-lead {
   display: block;
-  font-size: clamp(var(--font-size-lg), 4vw, var(--font-size-xl));
+  font-size: clamp(var(--font-size-sm), 2vw, var(--font-size-md));
   font-weight: 400;
   letter-spacing: 0.05em;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
 }
 
 .note__panel-strong {
   display: block;
-  font-size: clamp(var(--font-size-xl), 6vw, var(--font-size-3xl));
+  font-size: clamp(var(--font-size-md), 3vw, var(--font-size-lg));
   font-weight: 800;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -62,28 +83,27 @@
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-xs);
-  padding: 0.95rem 2.4rem;
-  font-size: var(--font-size-md);
+  padding: 0.7rem 1.8rem;
+  font-size: var(--font-size-xs);
   font-weight: 600;
   letter-spacing: 0.04em;
   text-decoration: none;
-  color: var(--color-text-primary);
-  background: var(--color-text-white);
+  color: #000000;
+  background: #ffffff;
   border: none;
-  border-radius: var(--radius-md);
-  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  margin-left: 2rem;
+  white-space: nowrap;
 }
 
 .note__panel-button:hover {
-  background: rgba(255, 255, 255, 0.95);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: rotate(15deg) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
 .note__panel-button:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transform: rotate(15deg) scale(0.98);
 }
 
 @media (max-width: 600px) {
@@ -92,25 +112,111 @@
   }
 
   .note__card {
-    width: min(1080px, 96vw);
-    aspect-ratio: 4 / 5;
+    width: min(1080px, 85vw);
+    aspect-ratio: 16 / 10;
   }
 
   .note__panel {
-    padding: clamp(var(--spacing-lg), 5vw, var(--spacing-xl));
-    padding-top: clamp(var(--spacing-lg), 16vh, var(--spacing-max));
+    width: 55%;
+    height: 55%;
+    bottom: -10%;
+    right: 0%;
+    transform: rotate(-10deg);
+    padding: var(--spacing-md);
+    padding-right: 12%;
+    padding-bottom: 10%;
+  }
+  
+  .note__panel-text,
+  .note__panel-button {
+    transform: rotate(10deg);
+  }
+  
+  .note__panel-button:hover {
+    transform: rotate(10deg) scale(1.05);
+  }
+  
+  .note__panel-button:active {
+    transform: rotate(10deg) scale(0.98);
   }
 
   .note__panel-lead {
-    font-size: clamp(1.1rem, 5vw, var(--font-size-lg));
+    font-size: 0.75rem;
   }
 
   .note__panel-strong {
-    font-size: clamp(1.6rem, 8vw, var(--font-size-xl));
+    font-size: 1rem;
   }
-
+  
   .note__panel-button {
-    padding: 0.85rem var(--spacing-xl);
-    font-size: var(--font-size-sm);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+  }
+}
+
+#image-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 3rem;
+}
+.scroll-top,
+.scroll-bottom {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+}
+
+.scroll-top__track,
+.scroll-bottom__track {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  height: 100%;
+  will-change: transform;
+}
+
+.scroll-top__track {
+  animation: scroll-right 30s linear infinite;
+}
+
+.scroll-bottom__track {
+  animation: scroll-left 30s linear infinite;
+}
+
+.scroll-top__track img,
+.scroll-bottom__track img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .scroll-top,
+  .scroll-bottom {
+    height: 150px;
+    margin-top: 1.5rem;
   }
 }

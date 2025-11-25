@@ -2,7 +2,7 @@ import { clamp01 } from './utils.js';
 
 export function initializeHero(heroScrollSection, heroViewport) {
   if (!heroScrollSection || !heroViewport) {
-    return () => {}; // Return no-op if elements missing
+    return () => {};
   }
 
   let heroProgress = 0;

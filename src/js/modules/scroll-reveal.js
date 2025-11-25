@@ -2,7 +2,7 @@ import { clamp01 } from './utils.js';
 
 export function initializeScrollReveal() {
   const elementsToReveal = [
-    ...document.querySelectorAll('.js-about-heading, .js-about-text, .js-about-image, .js-person-card'),
+    ...document.querySelectorAll('.js-about-heading, .js-about-text, .js-about-image, .js-person-card, .js-note-card'),
   ];
   
   if (!elementsToReveal.length) {

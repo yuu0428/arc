@@ -25,7 +25,6 @@ export function initializeLogo(logo, logoImg, heroBackdrop) {
     currentLogoMode = mode;
   };
 
-  // Initial set
   setLogoSourceForMode('default');
 
   const evaluateLogoContrast = () => {

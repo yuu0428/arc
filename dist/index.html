@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arc Yamanashi --Prototype</title>
-  <script type="module" crossorigin src="./assets/index-DdQUB4Vz.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BUFdJid2.css">
+  <script type="module" crossorigin src="./assets/index-_3Uiv0Di.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Cy-FgCuU.css">
 </head>
 <body>
   <a class="logo js-logo" href="#top" data-theme="light">
@@ -41,7 +41,7 @@
     </section>
 
 
-    <section id="about" class="about">
+    <section class="about">
       <div class="about__section about__section--intro">
         <div class="about__heading js-about-heading">
           小さな一歩の<br>
@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div class="about__section about__section--story">
+      <div id="about" class="about__section about__section--story">
         <div class="about__text js-about-text">
           「Arc」という名前には、私たちは<br>
           一人ひとりが小さな"孤"だけれど、<br>
@@ -66,7 +66,7 @@
           私たち自身も変化していきたい。<br>
           <span>――そんな願いをこの名前に託しました。</span>
         </div>
-        <a class="about__button" href="about-our.html">view more</a>
+        <a class="about__button about__button--view-more" href="about-our.html">view more</a>
       </div>
 
       <div class="about__section about__section--team">
@@ -90,13 +90,13 @@
               を生む架け橋になりたい<br>
             </div>
           </div>
-          <a class="about__button" href="greetings.html">代表挨拶</a>
+          <a class="about__button about__button--greeting" href="greetings.html">代表挨拶</a>
         </div>
       </div>
     </section>
 
     <section id="note" class="note">
-      <div class="note__card">
+      <div class="note__card js-note-card">
         <img class="note__image" src="./assets/IMG_4-nogX6JYe.jpg" alt="活動の様子" />
         <div class="note__panel">
           <div class="note__panel-text">
@@ -104,6 +104,15 @@
             <span class="note__panel-strong">活動しています</span>
           </div>
           <a class="note__panel-button" href="https://note.com/yamanashi_hs" target="_blank" rel="noopener">Noteを見る→</a>
+        </div>
+      </div>
+
+      <div id="image-scroll">
+        <div class="scroll-top js-scroll-top">
+          <div class="scroll-top__track js-scroll-track" data-direction="right"></div>
+        </div>
+        <div class="scroll-bottom js-scroll-bottom">
+          <div class="scroll-bottom__track js-scroll-track" data-direction="left"></div>
         </div>
       </div>
     </section>

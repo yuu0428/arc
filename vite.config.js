@@ -7,7 +7,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    // ソースマップを出力しておくと、デバッグ時に元のファイル位置がわかります（任意）
     sourcemap: true,
   }
 });

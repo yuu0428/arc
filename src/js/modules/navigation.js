@@ -9,7 +9,6 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
   const items = Array.from(wheel.querySelectorAll('[data-nav-item]'));
   if (!items.length) return;
 
-  // ガイド要素の生成（初回のみ数秒表示）
   let guide = overlay.querySelector('.js-nav-guide');
   if (!guide) {
     guide = document.createElement('div');
@@ -129,10 +128,43 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
       return;
     }
 
+    const images = document.querySelectorAll('img');
+    let maxOverlapRatio = 0;
+
+    const buttonArea = rect.width * rect.height;
+
+    for (const img of images) {
+      const imgRect = img.getBoundingClientRect();
+      if (
+        imgRect.bottom > rect.top &&
+        imgRect.top < rect.bottom &&
+        imgRect.right > rect.left &&
+        imgRect.left < rect.right
+      ) {
+        const intersectLeft = Math.max(rect.left, imgRect.left);
+        const intersectTop = Math.max(rect.top, imgRect.top);
+        const intersectRight = Math.min(rect.right, imgRect.right);
+        const intersectBottom = Math.min(rect.bottom, imgRect.bottom);
+
+        const intersectWidth = Math.max(0, intersectRight - intersectLeft);
+        const intersectHeight = Math.max(0, intersectBottom - intersectTop);
+        const intersectArea = intersectWidth * intersectHeight;
+
+        const overlapRatio = intersectArea / buttonArea;
+        if (overlapRatio > maxOverlapRatio) {
+          maxOverlapRatio = overlapRatio;
+        }
+      }
+    }
+
+    if (maxOverlapRatio >= 0.5) {
+      menuToggleButton.classList.add('is-inverted');
+      return;
+    }
+
     const sampleX = rect.left + rect.width / 2;
     const sampleY = rect.top + rect.height / 2;
 
-    // Pass menuToggleButton as ignore element and heroBackdrop for background check
     const sampledColor = sampleColorAtPoint(sampleX, sampleY, [menuToggleButton], heroBackdrop);
     const { r, g, b } = sampledColor || { r: 255, g: 255, b: 255, a: 1 };
     const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;

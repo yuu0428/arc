@@ -84,8 +84,8 @@
   --menu-toggle-icon-default: #111827;
   --menu-toggle-shadow-default: 0 8px 16px rgba(0, 0, 0, 0.35);
   --menu-toggle-shadow-hover-default: 0 8px 16px rgba(0, 0, 0, 0.35);
-  --menu-toggle-bg-inverted: rgb(223, 223, 223);
-  --menu-toggle-bg-hover-inverted: rgb(248, 248, 248);
+  --menu-toggle-bg-inverted: rgba(223, 223, 223, 0.45);
+  --menu-toggle-bg-hover-inverted: rgba(248, 248, 248, 0.7);
   --menu-toggle-border-inverted: rgba(17, 24, 39, 0.22);
   --menu-toggle-icon-inverted: #111827;
   --menu-toggle-shadow-inverted: 0 10px 24px rgba(15, 23, 42, 0.22);
