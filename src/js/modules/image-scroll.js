@@ -5,6 +5,7 @@ export function initializeImageScroll() {
 
   const scrollTopTrack = document.querySelector('.js-scroll-top .js-scroll-track');
   const scrollBottomTrack = document.querySelector('.js-scroll-bottom .js-scroll-track');
+  const imageScrollContainer = document.querySelector('#image-scroll');
 
   if (!scrollTopTrack || !scrollBottomTrack) {
     console.warn('Scroll tracks not found');
@@ -31,6 +32,7 @@ export function initializeImageScroll() {
   }
 
   const duplicateCount = 2;
+  const loadPromises = [];
 
   const appendImages = (track, images, altPrefix) => {
     for (let i = 0; i < duplicateCount; i++) {
@@ -40,12 +42,27 @@ export function initializeImageScroll() {
         img.alt = `${altPrefix} ${index}`;
         img.loading = 'lazy';
         track.appendChild(img);
+        const loadPromise = new Promise((resolve) => {
+          if (img.complete && img.naturalWidth) {
+            resolve();
+            return;
+          }
+          img.onload = () => resolve();
+          img.onerror = () => resolve();
+        });
+        loadPromises.push(loadPromise);
       });
     }
   };
 
   appendImages(scrollTopTrack, topImageList, 'Scroll top');
   appendImages(scrollBottomTrack, bottomImageList, 'Scroll bottom');
+
+  Promise.all(loadPromises).then(() => {
+    if (imageScrollContainer) {
+      imageScrollContainer.classList.add('image-scroll--ready');
+    }
+  });
 
   isInitialized = true;
 }

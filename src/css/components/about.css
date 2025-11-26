@@ -237,7 +237,7 @@ body.has-scroll-reveal .person-card {
 
   .person-card__text {
     width: 50%;
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-size: clamp(0.7rem, 1.5vw, 1rem);
     white-space: nowrap;
     line-height: 1.65;
     height: inherit;

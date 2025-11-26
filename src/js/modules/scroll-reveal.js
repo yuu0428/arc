@@ -2,8 +2,16 @@ import { clamp01 } from './utils.js';
 
 export function initializeScrollReveal() {
   const elementsToReveal = [
-    ...document.querySelectorAll('.js-about-heading, .js-about-text, .js-about-image, .js-person-card, .js-note-card'),
+    ...document.querySelectorAll(
+      '.js-about-heading, .js-about-text, .js-about-image, .js-person-card, .js-note-card, .js-scroll-top, .js-scroll-bottom'
+    ),
   ];
+  const noteCard = document.querySelector('.js-note-card');
+  const noteElements = new Set(
+    ['js-note-card', 'js-scroll-top', 'js-scroll-bottom']
+      .map((className) => `.${className}`)
+      .flatMap((selector) => Array.from(document.querySelectorAll(selector)))
+  );
   
   if (!elementsToReveal.length) {
     return;
@@ -34,11 +42,15 @@ export function initializeScrollReveal() {
       harutoElement && harutoElement.isConnected
         ? computeProgress(harutoElement, viewportHeight, targetY, range)
         : null;
+    const noteProgress =
+      noteCard && noteCard.isConnected ? computeProgress(noteCard, viewportHeight, targetY, range) : null;
 
     elementsToReveal.forEach((target) => {
       let progress;
       if (sharedProgress !== null && (target === harutoElement || target === rikoElement)) {
         progress = sharedProgress;
+      } else if (noteProgress !== null && noteElements.has(target)) {
+        progress = noteProgress;
       } else {
         progress = computeProgress(target, viewportHeight, targetY, range);
       }

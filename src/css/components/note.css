@@ -47,7 +47,7 @@
   z-index: 2;
   transform: rotate(-15deg);
   transform-origin: bottom right;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 94%, 20% 94%);
 }
 
 .note__panel-text,
@@ -157,6 +157,7 @@
 #image-scroll {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
   width: 100%;
   margin-top: 3rem;
@@ -167,6 +168,9 @@
   overflow: hidden;
   position: relative;
   height: 200px;
+  opacity: var(--scroll-fade-progress, 0);
+  transform: translateY(calc((1 - var(--scroll-fade-progress, 0)) * 20px));
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .scroll-top__track,
@@ -176,6 +180,8 @@
   position: absolute;
   height: 100%;
   will-change: transform;
+  align-items: center;
+  animation-play-state: paused;
 }
 
 .scroll-top__track {
@@ -186,13 +192,19 @@
   animation: scroll-left 30s linear infinite;
 }
 
+.image-scroll--ready .scroll-top__track,
+.image-scroll--ready .scroll-bottom__track {
+  animation-play-state: running;
+}
+
 .scroll-top__track img,
 .scroll-bottom__track img {
-  height: 100%;
+  height: 90%;
   width: auto;
   object-fit: cover;
   border-radius: var(--radius-md);
   flex-shrink: 0;
+  animation: fade-loop 6s ease-in-out infinite alternate;
 }
 
 @keyframes scroll-right {
@@ -210,6 +222,15 @@
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-loop {
+  from {
+    opacity: 0.82;
+  }
+  to {
+    opacity: 1;
   }
 }
 
