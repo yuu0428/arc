@@ -1,11 +1,11 @@
 .note {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
-  padding: 15vh;
-  margin-top: 5vh;
+  /* padding: 5vh; */
+  /* margin-top: 10vh; */
   background: var(--color-note-bg);
 }
 
@@ -238,6 +238,5 @@
   .scroll-top,
   .scroll-bottom {
     height: 150px;
-    margin-top: 1.5rem;
   }
 }
