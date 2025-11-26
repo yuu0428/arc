@@ -12,8 +12,8 @@ export function initializeImageScroll() {
     return;
   }
 
-  const topImages = import.meta.glob('../../../images/scroll-top/*.jpg', { eager: true, import: 'default' });
-  const bottomImages = import.meta.glob('../../../images/scroll-bottom/*.jpg', { eager: true, import: 'default' });
+  const topImages = import.meta.glob('../../../images/scroll-top/*.webp', { eager: true, import: 'default' });
+  const bottomImages = import.meta.glob('../../../images/scroll-bottom/*.webp', { eager: true, import: 'default' });
 
   const sortByIndex = (entries, pattern) =>
     entries
@@ -23,8 +23,8 @@ export function initializeImageScroll() {
       })
       .sort((a, b) => a.index - b.index);
 
-  const topImageList = sortByIndex(Object.entries(topImages), /scroll-top(\d+)\.jpg$/);
-  const bottomImageList = sortByIndex(Object.entries(bottomImages), /scroll-bottom(\d+)\.jpg$/);
+  const topImageList = sortByIndex(Object.entries(topImages), /scroll-top(\d+)\.webp$/);
+  const bottomImageList = sortByIndex(Object.entries(bottomImages), /scroll-bottom(\d+)\.webp$/);
 
   if (!topImageList.length || !bottomImageList.length) {
     console.warn('Scroll images not found');

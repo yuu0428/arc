@@ -1,6 +1,6 @@
 import { sampleColorAtPoint } from './utils.js';
-import logoDefault from '../../../images/logo1.jpg';
-import logoDark from '../../../images/logo11.jpg';
+import logoDefault from '../../../images/logo1.webp';
+import logoDark from '../../../images/logo11.webp';
 
 export function initializeLogo(logo, logoImg, heroBackdrop) {
   if (!logo || !logoImg) return () => {};
