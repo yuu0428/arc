@@ -4,8 +4,6 @@
   justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
-  /* padding: 5vh; */
-  /* margin-top: 10vh; */
   background: var(--color-note-bg);
 }
 
@@ -182,6 +180,10 @@
   will-change: transform;
   align-items: center;
   animation-play-state: paused;
+}
+
+.scroll-bottom{
+  margin-top: 12px;
 }
 
 .scroll-top__track {
