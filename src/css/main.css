@@ -5,6 +5,7 @@
 @import './components/circular-nav.css';
 @import './components/about.css';
 @import './components/note.css';
+@import './components/beyamanashi.css';
 
 .hero-inline-text {
   font-size: 100px;

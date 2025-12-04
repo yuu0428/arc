@@ -19,7 +19,7 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
   const menuState = { isOpen: false };
   const gapAngle = 24;
   const arcSpan = 360 - gapAngle;
-  const targetAngleOffset = 165;
+  const targetAngleOffset = 180;
   const displayOffset = -8;
 
   const navState = {
@@ -47,7 +47,7 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
   } else {
     navState.step = -360 / items.length;
     navState.baseAngles = items.map((_, index) => index * navState.step);
-    const desiredGapCenter = -90;
+    const desiredGapCenter = -150;
     const lastBaseAngle = navState.baseAngles[items.length - 1] ?? 0;
     const gapCenterWithoutRotation = lastBaseAngle + navState.step / 2;
     navState.rotation = normalizeAngle(desiredGapCenter - gapCenterWithoutRotation + navState.targetAngleOffset);
@@ -345,7 +345,9 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
     if (index === null) return;
 
     const targetAngle = navState.baseAngles[index];
-    const current = normalizeAngle(targetAngle + navState.rotation - navState.targetAngleOffset);
+    const current = normalizeAngle(
+      targetAngle + navState.rotation + navState.displayOffset - navState.targetAngleOffset
+    );
     navState.rotation -= current;
     updateWheel();
     focusActiveItem();
@@ -370,13 +372,15 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
     }
 
     const activeIndex = getActiveItemIndex();
+    const stepMagnitude = Math.abs(navState.step) || 1;
 
     items.forEach((item, index) => {
       const baseAngle = navState.baseAngles[index] ?? 0;
       const angle = baseAngle + navState.rotation;
-      const distance = Math.abs(normalizeAngle(angle - navState.targetAngleOffset));
+      const displayAngle = angle + navState.displayOffset;
+      const distance = Math.abs(normalizeAngle(displayAngle - navState.targetAngleOffset));
 
-      const proximity = Math.max(0, 1 - Math.min(distance / (navState.step * 1.1 || 1), 1));
+      const proximity = Math.max(0, 1 - Math.min(distance / (stepMagnitude * 1.1), 1));
       const isActive = index === activeIndex;
       
       // Active item always gets maximum scale (1.06), others are scaled by proximity
@@ -384,7 +388,6 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
       const opacity = isActive ? 1 : 0.85;
 
       const itemDistance = Math.max(navState.radius * 0.75, navState.radius - 60);
-      const displayAngle = angle + navState.displayOffset;
       const transform = `translate(-50%, -40%) rotate(${displayAngle.toFixed(3)}deg) translateX(${itemDistance.toFixed(3)}px) rotate(${(180 - navState.displayOffset).toFixed(3)}deg) scale(${scale.toFixed(3)})`;
       item.style.transform = transform;
       item.style.opacity = opacity;
@@ -395,11 +398,8 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
 
     const toPositive = (value) => ((value % 360) + 360) % 360;
     if (items.length >= 2) {
-      // ギャップをアイテム0→1の中間（実表示角度）に固定
-      // テキスト側は translate(-50%, -40%) rotate(displayAngle) translateX(...) rotate(180deg) scale(...)
-      // なので、displayOffset + targetAngleOffset + 180deg をマスク計算にも反映させる
       const base0 = navState.baseAngles[0] ?? 0;
-      const displayAngle0 = toPositive(base0 + navState.rotation + navState.displayOffset + navState.targetAngleOffset + 180);
+      const displayAngle0 = toPositive(base0 + navState.rotation + navState.displayOffset);
       const gapCenter = toPositive(displayAngle0 + navState.step / 2);
       const arcStart = toPositive(gapCenter + navState.gapAngle / 2 + 105);
       wheel.style.setProperty('--nav-arc-start', `${arcStart}deg`);
@@ -413,7 +413,7 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
     let minDistance = Number.POSITIVE_INFINITY;
 
     items.forEach((_, index) => {
-      const angle = navState.baseAngles[index] + navState.rotation;
+      const angle = navState.baseAngles[index] + navState.rotation + navState.displayOffset;
       const distance = Math.abs(normalizeAngle(angle - navState.targetAngleOffset));
       if (distance < minDistance) {
         minDistance = distance;

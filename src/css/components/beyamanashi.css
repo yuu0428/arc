@@ -1,0 +1,118 @@
+.beyamanashi {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  width: 100%;
+  padding: var(--spacing-xl) 0;
+  /* overflow: hidden; Removed to allow title band to extend */
+  background-color: var(--color-bg); /* Default background */
+  --beya-img-width: min(calc(75vw + 3vw), calc(700px + 3vw));
+}
+
+/* Top Line with Arrow */
+.beyamanashi__line-top {
+  position: relative;
+  width: 80%; /* Leave margins on both ends */
+  height: 1px;
+  background-color: #000;
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  justify-content: flex-end; /* Arrow on the right */
+  align-items: center;
+}
+
+.beyamanashi__line-top::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 12px solid #000; /* Right pointing arrow */
+}
+
+/* Photo Frame */
+.beyamanashi__frame {
+  position: relative;
+  width: fit-content;
+  padding: 1rem; /* Space between image and border */
+  border: 5px solid #000;
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  align-self: flex-start;
+  margin-left: 5%;
+}
+
+.beyamanashi__image {
+  display: block;
+  width: var(--beya-img-width); /* extend width by +3vw to the right */
+  max-width: var(--beya-img-width);
+  height: auto;
+}
+
+/* Title Band */
+.beyamanashi__title-band {
+  position: absolute;
+  top: 1rem; /* Align with the top edge of the image (padding is 1rem) */
+  right: -5rem; /* Calculated to place image edge between 's' and 'h' */
+  transform: translateY(-50%); /* Vertically center on the top edge */
+  background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent black */
+  padding: 0.8rem 3rem 0.8rem 2rem;
+  color: #fff;
+  font-family: 'XANO Mincho', serif; /* Ensure this font is available or fallback */
+  font-size: 3rem; /* 150% up */
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* Bottom Line with Arrow */
+.beyamanashi__line-bottom {
+  position: relative;
+  width: 80%;
+  height: 1px;
+  background-color: #000;
+  /* margin-top: var(--spacing-xs); */
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: flex-start; /* Arrow on the left */
+  align-items: center;
+}
+
+.beyamanashi__line-bottom::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-right: 12px solid #000; /* Left pointing arrow */
+}
+
+/* Placeholder */
+.beyamanashi__placeholder {
+  /* width: min(300px, 90vw); */
+  width: min(500px, 90vw);
+  height: 120px;
+  background-color: #000;
+  margin-top: var(--spacing-md);
+}
+
+@media (max-width: 600px) {
+  .beyamanashi__title-band {
+    font-size: 2.4rem;
+    padding: 0.6rem 2rem;
+    line-height: 1.2; /* Ensure vertical centering is consistent */
+    right: -4rem; /* Adjusted to fit better while maintaining alignment */
+  }
+  
+  .beyamanashi__frame {
+    padding: 0.3rem;
+    max-width: fit-content;
+    margin-left: 2vw; /* Move left to prevent title band cutoff on right */
+  }
+}

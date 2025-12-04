@@ -16,6 +16,7 @@
       <button class="menu-toggle js-menu-toggle" type="button" aria-label="メニューを開く" aria-controls="nav-circular" aria-expanded="false">
         <span class="menu-toggle__line"></span>
       </button>
+      
     </div>
   </header>
 
@@ -69,7 +70,7 @@
       </div>
 
       <div class="about__section about__section--team">
-        <div id="greetings"></div>
+        <div id="greatings"></div>
         <img class="about__image js-about-image" src="images/IMG_1.webp" alt="Arcメンバー" />
         <div class="about__greetings">
           <div class="person-card person-card--haruto js-person-card" data-person="haruto">
@@ -114,6 +115,17 @@
         </div>
       </div>
     </section>
+
+    <section id="beyamanashi" class="beyamanashi">
+      <div class="beyamanashi__line-top"></div>
+      <div class="beyamanashi__frame">
+        <div class="beyamanashi__title-band">Be Yamanashi</div>
+        <img class="beyamanashi__image" src="images/IMG_5.webp" alt="Be Yamanashi" />
+      </div>
+      <div class="beyamanashi__line-bottom"></div>
+      <div class="beyamanashi__placeholder"></div>
+    </section>
+  
   </main>
 
   <nav class="nav-circular js-nav-circular" id="nav-circular" data-circular-nav role="dialog" aria-modal="true" aria-hidden="true" hidden>
@@ -124,13 +136,13 @@
         <button type="button" class="nav-circular__item" data-nav-item data-target="#about">Arcとは</button>
         <button type="button" class="nav-circular__item" data-nav-item data-target="#greetings">代表挨拶</button>
         <button type="button" class="nav-circular__item" data-nav-item data-target="#note">Note</button>
-        <button type="button" class="nav-circular__item" data-nav-item>NMO</button>
+        <button type="button" class="nav-circular__item" data-nav-item data-target="#beyamanashi">Be Yamanashi</button>
         <button type="button" class="nav-circular__item" data-nav-item>PQR</button>
       </div>
       <button type="button" class="nav-circular__close" aria-label="メニューを閉じる" data-nav-close></button>
     </div>
   </nav>
 
-  <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="src/js/main.js"></script>
 </body>
 </html>
