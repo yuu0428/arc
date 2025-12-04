@@ -61,14 +61,15 @@
 /* Title Band */
 .beyamanashi__title-band {
   position: absolute;
-  top: 1rem; /* Align with the top edge of the image (padding is 1rem) */
-  right: -5rem; /* Calculated to place image edge between 's' and 'h' */
+  top: 0.5rem; /* Align with the top edge of the image (padding is 1rem) */
+  /* right: -4.2rem; Calculated to place image edge between 's' and 'h' */
   transform: translateY(-50%); /* Vertically center on the top edge */
   background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent black */
-  padding: 0.8rem 2rem 0.8rem 1rem;
+  padding: 0.8rem 0.5rem 0.8rem 0.5rem;
   color: #fff;
-  font-family: 'XANO Mincho', serif; /* Ensure this font is available or fallback */
+  font-family: 'XANO Mincho', serif;
   font-size: 3rem; /* 150% up */
+  line-height: 1;
   z-index: 2;
   white-space: nowrap;
 }
@@ -115,10 +116,10 @@
 
 @media (max-width: 600px) {
   .beyamanashi__title-band {
-    font-size: 2.4rem;
-    padding: 0.6rem 2rem;
-    line-height: var(--line-height-xs); /* Ensure vertical centering is consistent */
-    right: -4rem; /* Adjusted to fit better while maintaining alignment */
+    font-size: 2.5rem;
+    padding: 0.6rem 1rem;
+    line-height: 1; /* Ensure vertical centering is consistent */
+    right: -2rem; /*Adjusted to fit better while maintaining alignment */
   }
   
   .beyamanashi__frame {
