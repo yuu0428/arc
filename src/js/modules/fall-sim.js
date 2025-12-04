@@ -7,14 +7,14 @@ export function initializeFallSim() {
   const floorEl = document.querySelector('.js-floor');
   if (!person || !circle || !floorEl) return;
 
-  let fallState = 'idle'; // idle | falling | settled
+  let fallState = 'idle'; // idle | falling | settled のいずれかの状態
   let lastTriggerTurn = -1;
-  const angleOffset = -90; // align 0deg to top if needed
+  const angleOffset = -90; // 必要に応じて0度を上向きに合わせる
   const triggerAngle = 280; // 欠けが真下に来る角度をさらに5度遅らせる
-  const triggerBuffer = 6; // tolerance
-  const rotationDurationMs = 18000; // spin-circle 18s
+  const triggerBuffer = 6; // 許容幅
+  const rotationDurationMs = 18000; // 円の回転を18秒に設定
   const triggerDelayMs = (triggerAngle / 360) * rotationDurationMs;
-  const gravity = 2000; // px/s^2
+  const gravity = 2000; // px/s^2 の重力加速度
   const restitution = 0.4;
   const stopVelocity = 6;
   const getPersonRect = () => person.getBoundingClientRect();

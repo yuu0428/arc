@@ -11,20 +11,20 @@
   min-height: 90vh;
   width: 100%;
   padding: var(--spacing-xl) 0;
-  /* overflow: hidden; Removed to allow title band to extend */
-  background-color: var(--color-bg); /* Default background */
+  /* overflow: hidden; タイトル帯をはみ出させるために外した */
+  background-color: var(--color-bg); /* デフォルトの背景色 */
   --beya-img-width: min(80vw, 700px);
 }
 
-/* Top Line with Arrow */
+/* 上部の矢印付きライン */
 .beyamanashi__line-top {
   position: relative;
-  width: 80%; /* Leave margins on both ends */
+  width: 80%; /* 両端に余白を残す */
   height: 1px;
   background-color: #000;
   margin-bottom: var(--spacing-xl);
   display: flex;
-  justify-content: flex-end; /* Arrow on the right */
+  justify-content: flex-end; /* 矢印を右側に配置 */
   align-items: center;
 }
 
@@ -36,14 +36,14 @@
   height: 0;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-left: 12px solid #000; /* Right pointing arrow */
+  border-left: 12px solid #000; /* 右向きの矢印 */
 }
 
-/* Photo Frame */
+/* 写真フレーム */
 .beyamanashi__frame {
   position: relative;
   width: fit-content;
-  padding: 1rem; /* Space between image and border */
+  padding: 1rem; /* 画像と枠の間の余白 */
   border: 5px solid #000;
   margin-bottom: var(--spacing-lg);
   display: flex;
@@ -53,39 +53,39 @@
 
 .beyamanashi__image {
   display: block;
-  width: var(--beya-img-width); /* extend width by +3vw to the right */
+  width: var(--beya-img-width); /* 幅を右側へ実質+3vw広げる */
   max-width: var(--beya-img-width);
   height: calc(var(--beya-img-width) * 0.722); /* 画像比0.848×高さ85% ≒ 0.722 */
   object-fit: cover;
   object-position: center 100%;
 }
 
-/* Title Band */
+/* タイトル帯 */
 .beyamanashi__title-band {
   position: absolute;
-  top: 0.5rem; /* Align with the top edge of the image (padding is 1rem) */
-  /* right: -4.2rem; Calculated to place image edge between 's' and 'h' */
-  transform: translateY(-50%); /* Vertically center on the top edge */
-  background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent black */
+  top: 0.5rem; /* 画像の上端に合わせる（paddingは1rem） */
+  /* right: -4.2rem; 画像の端が「s」と「h」の間に来るよう算出 */
+  transform: translateY(-50%); /* 上辺で縦方向の中央揃え */
+  background-color: rgba(0, 0, 0, 0.85); /* 半透明の黒 */
   padding: 0.8rem 0.5rem 0.8rem 0.5rem;
   color: #fff;
   font-family: 'Noto Serif JP', serif;
-  font-size: 3rem; /* 150% up */
+  font-size: 3rem; /* 150%拡大 */
   line-height: 1;
   z-index: 2;
   white-space: nowrap;
 }
 
-/* Bottom Line with Arrow */
+/* 下部の矢印付きライン */
 .beyamanashi__line-bottom {
   position: relative;
   width: 80%;
   height: 1px;
   background-color: #000;
-  /* margin-top: var(--spacing-xs); */
+  /* margin-top: var(--spacing-xs); を有効にする場合 */
   margin-bottom: var(--spacing-lg);
   display: flex;
-  justify-content: flex-start; /* Arrow on the left */
+  justify-content: flex-start; /* 矢印を左側に配置 */
   align-items: center;
 }
 
@@ -97,12 +97,12 @@
   height: 0;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-right: 12px solid #000; /* Left pointing arrow */
+  border-right: 12px solid #000; /* 左向きの矢印 */
 }
 
-/* Placeholder */
+/* プレースホルダー */
 .beyamanashi__placeholder {
-  /* width: min(300px, 90vw); */
+  /* width: min(300px, 90vw); を使う場合 */
   width: min(500px, 85vw);
   height: calc(var(--line-height-lg) * 7 + var(--spacing-sm) * 2);
   background-color: #000;
@@ -120,13 +120,13 @@
   .beyamanashi__title-band {
     font-size: 2.75rem;
     padding: 0.75rem 1rem;
-    line-height: 1; /* Ensure vertical centering is consistent */
-    right: -3rem; /*Adjusted to fit better while maintaining alignment */
+    line-height: 1; /* 縦方向の中央揃えを一定に保つ */
+    right: -3rem; /* 整列を保ちつつフィットするよう調整 */
   }
   
   .beyamanashi__frame {
     padding: 0.3rem;
     max-width: fit-content;
-    margin-left: 2vw; /* Move left to prevent title band cutoff on right */
+    margin-left: 2vw; /* 右側でタイトル帯が切れないよう左へ寄せる */
   }
 }

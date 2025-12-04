@@ -7,33 +7,33 @@
 }
 
 :root {
-  /* Typography Colors */
+  /* タイポグラフィ用カラー */
   --color-text-primary: #111827;
   --color-text-white: #ffffff;
   --color-text-light: #f4f7fb;
   
-  /* Background Colors */
+  /* 背景カラー */
   --color-bg: #f8f9fb;
   --color-bg-dark: #000000;
   --color-bg-hero: #f8f9fb;
   
-  /* Border Colors */
+  /* 枠線カラー */
   --color-border-light: rgba(255, 255, 255, 0.35);
   --color-border-dark: rgba(17, 24, 39, 0.22);
   
-  /* Component Colors */
+  /* コンポーネント用カラー */
   --color-about-heading: #1f2937;
   --color-note-bg: #f6f9fd;
   
-  /* Font Families */
+  /* フォントファミリー */
   --font-family-base: "Manrope", "Yu Gothic Medium", "Yu Gothic", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
   --font-family-fallback: "Helvetica Neue", Arial, sans-serif;
   
-  /* Global Typography Settings */
+  /* 文字組みの全体設定 */
   font-feature-settings: "palt";
   letter-spacing: 0.05em;
   
-  /* Font Sizes (rem based, 16px = 1rem) */
+  /* フォントサイズ（rem基準、16px = 1rem） */
   --font-size-xs: 0.85rem;
   --font-size-sm: 1rem;
   --font-size-md: 1.125rem;
@@ -42,7 +42,7 @@
   --font-size-2xl: 3rem;
   --font-size-3xl: 4rem;
 
-  /* line-height */
+  /* 行の高さ */
   --line-height-xs: 1.25rem;
   --line-height-sm: 1.5rem;
   --line-height-md: 1.75rem;
@@ -51,7 +51,7 @@
   --line-height-2xl: 2.5rem;
   --line-height-3xl: 3rem;
   
-  /* Spacing (rem based) */
+  /* 余白（rem基準） */
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
   --spacing-md: 1rem;
@@ -63,27 +63,27 @@
   --spacing-5xl: 8rem;
   --spacing-max: 100vh;
   
-  /* Border Radius */
+  /* 角丸 */
   --radius-sm: 0.875rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
   --radius-full: 999px;
   
-  /* Transitions */
+  /* トランジション */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.35s ease;
   --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   
-  /* Shadows */
-  --shadow-color: 15, 23, 42; /* Slate-900-ish */
+  /* シャドウ */
+  --shadow-color: 15, 23, 42; /* スレート900系の色合い */
   --shadow-sm: 0 1px 2px 0 rgba(var(--shadow-color), 0.05);
   --shadow-md: 0 4px 6px -1px rgba(var(--shadow-color), 0.1), 0 2px 4px -1px rgba(var(--shadow-color), 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(var(--shadow-color), 0.1), 0 4px 6px -2px rgba(var(--shadow-color), 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(var(--shadow-color), 0.1), 0 10px 10px -5px rgba(var(--shadow-color), 0.04);
   --shadow-glow: 0 0 15px rgba(var(--shadow-color), 0.1);
   
-  /* Legacy/Component-specific variables */
+  /* 既存・コンポーネント固有の変数 */
   --header-surface: rgba(248, 249, 251, 0.92);
   --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.08);
   --menu-diameter: 50vw;

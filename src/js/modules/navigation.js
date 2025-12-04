@@ -383,7 +383,7 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
       const proximity = Math.max(0, 1 - Math.min(distance / (stepMagnitude * 1.1), 1));
       const isActive = index === activeIndex;
       
-      // Active item always gets maximum scale (1.06), others are scaled by proximity
+      // アクティブ項目は常に最大スケール(1.06)、それ以外は近さに応じて拡大率を決定
       const scale = isActive ? 1.06 : (0.84 + proximity * 0.22);
       const opacity = isActive ? 1 : 0.85;
 
@@ -398,7 +398,7 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
 
     const toPositive = (value) => ((value % 360) + 360) % 360;
     if (items.length >= 2) {
-      const gapDisplayOffset = -20; // rotate the visible gap clockwise
+      const gapDisplayOffset = -20; // 見えている切れ目を時計回りに回転させる
       const base0 = navState.baseAngles[0] ?? 0;
       const displayAngle0 = toPositive(base0 + navState.rotation + navState.displayOffset + gapDisplayOffset);
       const gapCenter = toPositive(displayAngle0 + navState.step / 2);
