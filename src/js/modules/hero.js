@@ -15,7 +15,11 @@ export function initializeHero(heroScrollSection, heroViewport) {
 
     if (Math.abs(nextProgress - heroProgress) > 0.001) {
       heroProgress = nextProgress;
-      heroScrollSection.style.setProperty('--hero-progress', heroProgress.toFixed(4));
+      const progressValue = heroProgress.toFixed(4);
+      heroScrollSection.style.setProperty('--hero-progress', progressValue);
+      const backdropShade = Math.round(255 * heroProgress);
+      const backdropColor = `rgb(${backdropShade}, ${backdropShade}, ${backdropShade})`;
+      heroScrollSection.style.setProperty('--hero-backdrop-color', backdropColor);
     }
 
     const shouldRelease = heroProgress >= 0.98;

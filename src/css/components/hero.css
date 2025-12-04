@@ -4,6 +4,7 @@
   padding-top: 60vh;
   background: var(--color-bg-hero);
   --hero-progress: 0;
+  --hero-backdrop-color: var(--color-bg-dark);
 }
 
 .hero__viewport {
@@ -14,18 +15,14 @@
   height: 100vh;
   min-height: 100vh;
   overflow: hidden;
-  will-change: transform, opacity;
-  transform: translate3d(0, calc(var(--hero-progress) * var(--hero-slide-distance)), 0);
+  will-change: opacity;
+  transform: translate3d(0, 0, 0);
   opacity: calc(1 - var(--hero-progress));
   z-index: 20;
 }
 
 .hero.is-released {
   padding-top: 0;
-}
-
-.hero.is-released .hero__viewport {
-  position: relative;
 }
 
 .hero.is-dismissed .hero__viewport {
@@ -149,7 +146,7 @@
   right: 0;
   height: calc(var(--hero-circle-top) + var(--hero-circle-size) + var(--hero-tagline-gap) + 320px);
   min-height: 100vh;
-  background: var(--color-bg-dark);
+  background: var(--hero-backdrop-color);
   z-index: 0;
   pointer-events: none;
 }
