@@ -19,8 +19,8 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
   const menuState = { isOpen: false };
   const gapAngle = 24;
   const arcSpan = 360 - gapAngle;
-  const targetAngleOffset = 180;
   const displayOffset = -8;
+  const targetAngleOffset = normalizeAngle(displayOffset - 180);
 
   const navState = {
     rotation: 0,
@@ -53,7 +53,7 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
     navState.rotation = normalizeAngle(desiredGapCenter - gapCenterWithoutRotation + navState.targetAngleOffset);
 
     const firstTargetAngle = navState.baseAngles[0];
-    const currentAngle = normalizeAngle(firstTargetAngle + navState.rotation);
+    const currentAngle = normalizeAngle(firstTargetAngle + navState.rotation + navState.displayOffset);
     const correction = normalizeAngle(navState.targetAngleOffset - currentAngle);
     navState.rotation += correction;
   }
@@ -398,8 +398,9 @@ export function initializeCircularNav(circularNav, menuToggleButton, header, anc
 
     const toPositive = (value) => ((value % 360) + 360) % 360;
     if (items.length >= 2) {
+      const gapDisplayOffset = -20; // rotate the visible gap clockwise
       const base0 = navState.baseAngles[0] ?? 0;
-      const displayAngle0 = toPositive(base0 + navState.rotation + navState.displayOffset);
+      const displayAngle0 = toPositive(base0 + navState.rotation + navState.displayOffset + gapDisplayOffset);
       const gapCenter = toPositive(displayAngle0 + navState.step / 2);
       const arcStart = toPositive(gapCenter + navState.gapAngle / 2 + 105);
       wheel.style.setProperty('--nav-arc-start', `${arcStart}deg`);
