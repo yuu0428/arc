@@ -35,51 +35,6 @@ export function initializeLogo(logo, logoImg, heroBackdrop) {
 
   const evaluateLogoContrast = () => {
     const rect = logo.getBoundingClientRect();
-    if (!rect.width || !rect.height) {
-      return;
-    }
-
-    const images = document.querySelectorAll('img');
-    const logoArea = rect.width * rect.height;
-    let maxOverlapRatio = 0;
-
-    images.forEach((img) => {
-      if (img === logoImg) return;
-      const imgRect = img.getBoundingClientRect();
-      if (
-        imgRect.bottom <= rect.top ||
-        imgRect.top >= rect.bottom ||
-        imgRect.right <= rect.left ||
-        imgRect.left >= rect.right
-      ) {
-        return;
-      }
-
-      const intersectLeft = Math.max(rect.left, imgRect.left);
-      const intersectTop = Math.max(rect.top, imgRect.top);
-      const intersectRight = Math.min(rect.right, imgRect.right);
-      const intersectBottom = Math.min(rect.bottom, imgRect.bottom);
-
-      const intersectWidth = Math.max(0, intersectRight - intersectLeft);
-      const intersectHeight = Math.max(0, intersectBottom - intersectTop);
-      const intersectArea = intersectWidth * intersectHeight;
-
-      const overlapRatio = intersectArea / logoArea;
-      if (overlapRatio > maxOverlapRatio) {
-        maxOverlapRatio = overlapRatio;
-      }
-    });
-
-    if (maxOverlapRatio >= 0.5) {
-      if (logo.dataset.theme !== 'dark') {
-        logo.dataset.theme = 'dark';
-      }
-      if (currentLogoMode !== 'dark') {
-        setLogoSourceForMode('dark');
-      }
-      return;
-    }
-
     const sampleX = rect.left + rect.width / 2;
     const sampleY = rect.top + rect.height / 2;
 
