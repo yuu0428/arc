@@ -1,3 +1,7 @@
+#beyamanashi{
+  scroll-margin-top: 5vh;
+}
+
 .beyamanashi {
   position: relative;
   display: flex;
@@ -9,7 +13,7 @@
   padding: var(--spacing-xl) 0;
   /* overflow: hidden; Removed to allow title band to extend */
   background-color: var(--color-bg); /* Default background */
-  --beya-img-width: min(calc(75vw + 3vw), calc(700px + 3vw));
+  --beya-img-width: min(80vw, 700px);
 }
 
 /* Top Line with Arrow */
@@ -61,7 +65,7 @@
   right: -5rem; /* Calculated to place image edge between 's' and 'h' */
   transform: translateY(-50%); /* Vertically center on the top edge */
   background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent black */
-  padding: 0.8rem 3rem 0.8rem 2rem;
+  padding: 0.8rem 2rem 0.8rem 1rem;
   color: #fff;
   font-family: 'XANO Mincho', serif; /* Ensure this font is available or fallback */
   font-size: 3rem; /* 150% up */
@@ -97,16 +101,23 @@
 .beyamanashi__placeholder {
   /* width: min(300px, 90vw); */
   width: min(500px, 90vw);
-  height: 120px;
+  height: calc(var(--line-height-xs) * 13 + var(--spacing-sm) * 2);
   background-color: #000;
   margin-top: var(--spacing-md);
+}
+
+.beyamanashi__placeholder-text {
+  color: #fff;
+  margin: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
 }
 
 @media (max-width: 600px) {
   .beyamanashi__title-band {
     font-size: 2.4rem;
     padding: 0.6rem 2rem;
-    line-height: 1.2; /* Ensure vertical centering is consistent */
+    line-height: var(--line-height-xs); /* Ensure vertical centering is consistent */
     right: -4rem; /* Adjusted to fit better while maintaining alignment */
   }
   
