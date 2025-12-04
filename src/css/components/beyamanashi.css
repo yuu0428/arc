@@ -55,7 +55,9 @@
   display: block;
   width: var(--beya-img-width); /* extend width by +3vw to the right */
   max-width: var(--beya-img-width);
-  height: auto;
+  height: calc(var(--beya-img-width) * 0.722); /* 画像比0.848×高さ85% ≒ 0.722 */
+  object-fit: cover;
+  object-position: center 100%;
 }
 
 /* Title Band */
@@ -101,8 +103,8 @@
 /* Placeholder */
 .beyamanashi__placeholder {
   /* width: min(300px, 90vw); */
-  width: min(500px, 90vw);
-  height: calc(var(--line-height-xs) * 13 + var(--spacing-sm) * 2);
+  width: min(500px, 85vw);
+  height: calc(var(--line-height-lg) * 7 + var(--spacing-sm) * 2);
   background-color: #000;
   margin-top: var(--spacing-md);
 }
@@ -111,7 +113,7 @@
   color: #fff;
   margin: var(--spacing-sm);
   font-size: var(--font-size-xs);
-  line-height: var(--line-height-xs);
+  line-height: var(--line-height-lg);
 }
 
 @media (max-width: 600px) {
