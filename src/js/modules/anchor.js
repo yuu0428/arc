@@ -2,7 +2,7 @@ export function initializeAnchorRevealOverride() {
   const greetingsElements = Array.from(document.querySelectorAll('.js-person-card'));
   const anchorMap = new Map();
   if (greetingsElements.length) {
-    anchorMap.set('#greatings', { elements: greetingsElements, timer: null });
+    anchorMap.set('#greetings', { elements: greetingsElements, timer: null });
   }
   if (!anchorMap.size) {
     return null;

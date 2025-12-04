@@ -27,7 +27,7 @@
 
 .nav-circular__wheel-wrapper {
   position: absolute;
-  top: calc(-0.5 * var(--menu-diameter));
+  top: calc(-0.5 * var(--menu-diameter) + 30vh);
   right: calc(-0.5 * var(--menu-diameter));
   width: var(--menu-diameter);
   height: var(--menu-diameter);
